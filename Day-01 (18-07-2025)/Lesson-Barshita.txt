@@ -110,3 +110,37 @@ MILAN DAS                       7978168568      milandas63@gmail.com            
             B) me
             C) o
             D) Blank Output
+
+    =   s = "abcdefghijklmno"
+        print(s[-4:])
+        print(s[:-3])
+        print(s[-5:-2])
+        print(s[-8:-1:2])
+
+    =   s = "Python"
+        # Reverse the string
+        print(s[::-1])
+
+    =   s = "Hello, World!"
+        # Get the entire string
+        s2 = s[:]
+        s3 = s[::]
+        print(s2)
+        print(s3)
+
+    =   s = "Hello, World!"
+        # Characters from index 7 to the end
+        print(s[7:])
+        # Characters from the start up to index 5 (exclusive)
+        print(s[:5])
+
+    =   s = "Hello, World!"
+        # Characters from index 1 to index 5 (excluding 5)
+        print(s[1:5])
+
+    =   s = "abcdefghi"
+        # Every second character
+        print(s[::2])
+        # Every third character from index 1 to 8 (exclusive)
+        print(s[1:8:3])
+
