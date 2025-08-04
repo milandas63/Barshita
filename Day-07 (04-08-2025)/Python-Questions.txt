@@ -3431,23 +3431,63 @@ Sample Output:
     (positive integer values). Return a message if the numbers are strings.
 
 Ans.
+    # Define a function to add two numbers represented as strings
+    def test(n1, n2):
+        # Add '0' to the beginning of each input string to handle negative numbers
+        n1, n2 = '0' + n1, '0' + n2
+        
+        # Check if both modified strings are numeric
+        if (n1.isnumeric() and n2.isnumeric()):
+            # If true, convert the strings to integers, add them, and return the result as a string
+            return str(int(n1) + int(n2))
+        else:
+            # If not numeric, return an error message
+            return 'Error in input!'
+
+    # Test the function with different input strings and print the results
+    print(test("10", "32"))
+    print(test("10", "22.6"))
+    print(test("100", "-200")) 
 
 Sample Output:
-42
-Error in input!
-Error in input!
+    42
+    Error in input!
+    Error in input!
 
 ------------------------------------------------------------------------------------------------
 102.Remove punctuation from string.
     Write a Python program to remove punctuation from a given string.
 
 Ans.
+    # Import the 'string' module for accessing a string of punctuation characters
+    import string
+
+    # Define a function to remove punctuation characters from a given string
+    def remove_punctuations(text):
+        # Iterate through each punctuation character and replace it with an empty string
+        for c in string.punctuation:
+            text = text.replace(c, "")
+        
+        # Return the modified string without punctuation
+        return text
+
+    # Initialize a string with punctuation
+    text = "String! With. Punctuation?"
+
+    # Print the original text
+    print("Original text:")
+    print(text)
+
+    # Call the function to remove punctuation characters and print the result
+    result = remove_punctuations(text)
+    print("After removing Punctuations from the said string:")
+    print(result)
 
 Sample Output:
-Original text:
-String! With. Punctuation?
-After removing Punctuations from the said string:
-String With Punctuation
+    Original text:
+    String! With. Punctuation?
+    After removing Punctuations from the said string:
+    String With Punctuation
 
 ------------------------------------------------------------------------------------------------
 103.Replace long words with hash.
@@ -3455,14 +3495,46 @@ String With Punctuation
     and more with a hash character (#).
 
 Ans.
+    # Define a function to replace words with hash characters if their length is five or more
+    def test(text):
+        # Iterate through each word in the string
+        for i in text.split():
+            # Check if the length of the word is greater than or equal to 5
+            if len(i) >= 5:
+                # If true, replace the word with '#' repeated for the length of the word
+                text = text.replace(i, "#" * len(i))
+        
+        # Return the modified string
+        return text
+
+    # Initialize a string with words of varying lengths
+    text = "Count the lowercase letters in the said list of words:"
+    print("Original string:", text)
+
+    # Print a message indicating the replacement of words with hash characters
+    print("Replace words (length five or more) with hash characters in the said string:")
+
+    # Call the function to replace words and print the result
+    print(test(text))
+
+    # Repeat the process with a different string
+    text = "Python - Remove punctuations from a string:"
+    print("\nOriginal string:", text)
+
+    # Print a message indicating the replacement of words with hash characters
+    print("Replace words (length five or more) with hash characters in the said string:")
+
+    # Call the function to replace words and print the result
+    print(test(text)) 
 
 Sample Output:
-Original string: Count the lowercase letters in the said list of words:
-Replace words (length five or more) with hash characters in the said string:
-##### the ######### ####### in the said list of ######
-Original string: Python - Remove punctuations from a string:
-Replace words (length five or more) with hash characters in the said string:
-###### - ###### ############ from a #######
+    Original string: Count the lowercase letters in the said list of words:
+    Replace words (length five or more) with hash characters in the said string:
+    ##### the ######### ####### in the said list of ######
+
+    Original string: Python - Remove punctuations from a string:
+    Replace words (length five or more) with hash characters in the said string:
+    ###### - ###### ############ from a #######
 
 ------------------------------------------------------------------------------------------------
 104.Capitalize first letter of words.
@@ -3470,22 +3542,128 @@ Replace words (length five or more) with hash characters in the said string:
     remaining letters in a given string.
 
 Ans.
+    # Define a function to capitalize the first letter and lowercase the rest of each word in a string
+    def test(strs):
+        # Use a generator expression to capitalize each word and join them with spaces
+        return ' '.join(word.capitalize() for word in strs.split())    
 
-Sample Data:
-("Red Green WHITE") -> "Red Green White"
-("w3resource") -> "W3resource"
-("dow jones industrial average") -> "Dow Jones Industrial Average"
+    # Initialize a string with words in various cases
+    text = "Red Green WHITE"
+    print("Original string:", text)
+
+    # Print a message indicating the capitalization of the first letter in each word
+    print("Capitalize the first letter and lowercases the rest:")
+
+    # Call the function to capitalize words and print the result
+    print(test(text))
+
+    # Repeat the process with a different string
+    text = "w3resource"
+    print("\nOriginal string:", text)
+
+    # Print a message indicating the capitalization of the first letter in each word
+    print("Capitalize the first letter and lowercases the rest:")
+
+    # Call the function to capitalize words and print the result
+    print(test(text))
+
+    # Repeat the process with another different string
+    text = "dow jones industrial average"
+    print("\nOriginal string:", text)
+
+    # Print a message indicating the capitalization of the first letter in each word
+    print("Capitalize the first letter and lowercases the rest:")
+
+    # Call the function to capitalize words and print the result
+    print(test(text)) 
+
+Sample Output:
+    Original string: Red Green WHITE
+    Capitalize the first letter and lowercases the rest:
+    Red Green White
+
+    Original string: w3resource
+    Capitalize the first letter and lowercases the rest:
+    W3resource
+
+    Original string: dow jones industrial average
+    Capitalize the first letter and lowercases the rest:
+    Dow Jones Industrial Average
 
 ------------------------------------------------------------------------------------------------
 105.Extract name from email address.
     Write a Python program to extract and display the name from a given Email address.
 
 Ans.
+    # Define a function to extract the name from an email address
+    def test(email_address):
+        # Find the index of the '@' symbol in the email address
+        r = email_address.index("@")
+        
+        # Use a generator expression to join alphabetic characters before the '@' symbol
+        return "".join(l for l in email_address[:r] if l.isalpha())
+
+    # Initialize an email address
+    email_address = "john@example.com"
+    print("Original Email:", email_address)
+
+    # Print a message indicating the extraction of the name from the email address
+    print("Extract the name from the said Email address:")
+
+    # Call the function to extract the name and print the result
+    print(test(email_address))
+
+    # Repeat the process with a different email address
+    email_address = "john.smith@example.com"
+    print("\nOriginal Email:", email_address)
+
+    # Print a message indicating the extraction of the name from the email address
+    print("Extract the name from the said Email address:")
+
+    # Call the function to extract the name and print the result
+    print(test(email_address))
+
+    # Repeat the process with another different email address
+    email_address = "disposable.style.email.with+symbol@example.com@example.com"
+    print("\nOriginal Email:", email_address)
+
+    # Print a message indicating the extraction of the name from the email address
+    print("Extract the name from the said Email address:")
+
+    # Call the function to extract the name and print the result
+    print(test(email_address))
+
+    # Repeat the process with yet another different email address
+    email_address = "fully-qualified-domain@example.com"
+    print("\nOriginal Email:", email_address)
+
+    # Print a message indicating the extraction of the name from the email address
+    print("Extract the name from the said Email address:")
+
+    # Call the function to extract the name and print the result
+    print(test(email_address)) 
+
+Sample Output:
+    Original Email: john@example.com
+    Extract the name from the said Email address:
+    john
+
+    Original Email: john.smith@example.com
+    Extract the name from the said Email address:
+    johnsmith
+
+    Original Email: disposable.style.email.with+symbol@example.com@example.com
+    Extract the name from the said Email address:
+    disposablestyleemailwithsymbol
+
+    Original Email: fully-qualified-domain@example.com
+    Extract the name from the said Email address:
+    fullyqualifieddomain
 
 Sample Data:
-("john@example.com") -> ("john")
-("john.smith@example.com") -> ("johnsmith")
-("fully-qualified-domain@example.com") -> ("fullyqualifieddomain")
+    ("john@example.com") -> ("john")
+    ("john.smith@example.com") -> ("johnsmith")
+    ("fully-qualified-domain@example.com") -> ("fullyqualifieddomain")
 
 ------------------------------------------------------------------------------------------------
 106.Remove repeated consecutive chars.
@@ -3493,11 +3671,69 @@ Sample Data:
     them with single letters and print a updated string.
 
 Ans.
+    # Define a function to remove repeated consecutive characters in a string
+    # and replace them with a single occurrence of the character
+    def test(text):
+        # Initialize an empty list to store the result
+        result = []
+        
+        # Iterate through each character in the input string
+        for x in text:
+            # Check if the result list is empty or the last character in the result is not equal to the current character
+            if not result or result[-1] != x:
+                # If true, append the current character to the result list
+                result.append(x)
+        
+        # Join the characters in the result list to form the modified string
+        return ''.join(result)
+
+    # Initialize a string with repeated consecutive characters
+    text = "Red Green White"
+    print("Original string:", text)
+
+    # Print a message indicating the removal of repeated consecutive characters
+    print("Remove repeated consecutive characters and replace with the single letters:")
+
+    # Call the function to remove repeated consecutive characters and print the result
+    print(test(text))
+
+    # Repeat the process with a different string
+    text = "aabbbcdeffff"
+    print("\nOriginal string:", text)
+
+    # Print a message indicating the removal of repeated consecutive characters
+    print("Remove repeated consecutive characters and replace with the single letters:")
+
+    # Call the function to remove repeated consecutive characters and print the result
+    print(test(text))
+
+    # Repeat the process with another different string
+    text = "Yellowwooddoor"
+    print("\nOriginal string:", text)
+
+    # Print a message indicating the removal of repeated consecutive characters
+    print("Remove repeated consecutive characters and replace with the single letters:")
+
+    # Call the function to remove repeated consecutive characters and print the result
+    print(test(text)) 
+
+Sample Output:
+    Original string: Red Green White
+    Remove repeated consecutive characters and replace with the single letters:
+    Red Gren White
+
+    Original string: aabbbcdeffff
+    Remove repeated consecutive characters and replace with the single letters:
+    abcdef
+
+    Original string: Yellowwooddoor
+    Remove repeated consecutive characters and replace with the single letters:
+    Yelowodor
 
 Sample Data:
-("Red Green White") -> "Red Gren White"
-("aabbbcdeffff") -> "abcdef"
-("Yellowwooddoor") -> "Yelowodor"
+    ("Red Green White") -> "Red Gren White"
+    ("aabbbcdeffff") -> "abcdef"
+    ("Yellowwooddoor") -> "Yelowodor"
 
 ------------------------------------------------------------------------------------------------
 107.Count matches of three letters at same index.
@@ -3505,11 +3741,75 @@ Sample Data:
     string contains the same three letters at the same index.
 
 Ans.
+    # Define a function to check if two strings contain the same three letters at the same index
+    def test(text1, text2):
+        # Initialize a counter variable to count the occurrences
+        ctr = 0
+        
+        # Iterate through the range of indices up to the third-to-last index
+        for i in range(len(text1) - 2):
+            # Check if the substring of length 3 from both strings at the current index is the same
+            if text1[i:i+3] == text2[i:i+3]:
+                # If true, increment the counter
+                ctr += 1
+        
+        # Return the count of occurrences
+        return ctr
+
+    # Initialize two strings
+    text1 = "Red"
+    text2 = "RedGreen"
+
+    # Print the original strings
+    print("Original strings:", text1, text2)
+
+    # Print a message indicating the check for the same three letters at the same index
+    print("Check said two strings contain three letters at the same index:")
+
+    # Call the function to check and print the result
+    print(test(text1, text2))
+
+    # Repeat the process with different strings
+    text1 = "Red White"
+    text2 = "Red White"
+
+    # Print the original strings
+    print("\nOriginal strings:", text1, text2)
+
+    # Print a message indicating the check for the same three letters at the same index
+    print("Check said two strings contain three letters at the same index:")
+
+    # Call the function to check and print the result
+    print(test(text1, text2))
+
+    # Repeat the process with another set of different strings
+    text1 = "Red White"
+    text2 = "White Red"
+
+    # Print the original strings
+    print("\nOriginal strings:", text1, text2)
+
+    # Print a message indicating the check for the same three letters at the same index
+    print("Check said two strings contain three letters at the same index:")
+
+    # Call the function to check and print the result
+    print(test(text1, text2))
+
+Sample Output:
+    Original strings: Red RedGreen
+    Check said two strings contain three letters at the same index:
+    1
+    Original strings: Red White Red White
+    Check said two strings contain three letters at the same index:
+    7
+    Original strings: Red White White Red
+    Check said two strings contain three letters at the same index:
+    0
 
 Sample Data:
-("Red RedGreen") -> 1
-("Red White Red White) -> 7
-("Red White White Red") -> 0
+    ("Red RedGreen") -> 1
+    ("Red White Red White) -> 7
+    ("Red White White Red") -> 0
 
 ------------------------------------------------------------------------------------------------
 108.Add hashes around non-vowels.
@@ -3517,11 +3817,65 @@ Sample Data:
     element, which are not vowels.
 
 Ans.
+    # Define a function to insert hash elements on both sides of each element,
+    # which are not vowels, in the input string
+    def test(text):
+        # Use a list comprehension to create a list of modified elements
+        return "".join([el, '-' + el + '-'][el not in "AEIOUaeiou"] for el in text)
+
+    # Initialize a string
+    text = "Green"
+
+    # Print the original string
+    print("Original string:", text)
+
+    # Print a message indicating the insertion of hash elements
+    print("Insert Hash elements on both sides of each element, which are not vowels:")
+
+    # Call the function to modify the string and print the result
+    print(test(text))
+
+    # Repeat the process with a different string
+    text = "White"
+
+    # Print the original string
+    print("\nOriginal string:", text)
+
+    # Print a message indicating the insertion of hash elements
+    print("Insert Hash elements on both sides of each element, which are not vowels:")
+
+    # Call the function to modify the string and print the result
+    print(test(text))
+
+    # Repeat the process with a string containing only vowels
+    text = "aeiou"
+
+    # Print the original string
+    print("\nOriginal string:", text)
+
+    # Print a message indicating the insertion of hash elements
+    print("Insert Hash elements on both sides of each element, which are not vowels:")
+
+    # Call the function to modify the string and print the result
+    print(test(text)) 
+
+Sample Output:
+    Original string: Green
+    Insert Hash elements on both side of each element, which are not vowels:
+    -G--r-ee-n-
+
+    Original string: White
+    Insert Hash elements on both side of each element, which are not vowels:
+    -W--h-i-t-e
+
+    Original string: aeiou
+    Insert Hash elements on both side of each element, which are not vowels:
+    aeiou
 
 Sample Data:
-("Green" -> "-G--r-ee-n-"
-("White") -> "-W--h-i-t-e"
-("aeiou") -> "aeiou"
+    ("Green" -> "-G--r-ee-n-"
+    ("White") -> "-W--h-i-t-e"
+    ("aeiou") -> "aeiou"
 
 ------------------------------------------------------------------------------------------------
 109.Count leap years in a year range.
@@ -3529,10 +3883,60 @@ Sample Data:
     years. Ranges of years should be accepted as strings.
 
 Ans.
+    # Define a function to count the number of leap years within a given range of years
+    def test(r_years):
+        # Extract the start and end year from the input string
+        start_year, end_year = map(int, r_years.split('-'))
+        # Use a generator expression to count the leap years within the specified range
+        return sum(is_leap_year(year) for year in range(start_year, end_year+1))
+
+    # Define a function to check if a given year is a leap year
+    def is_leap_year(y):
+        # Check the leap year conditions and return True if it's a leap year, otherwise False
+        if y % 400 == 0:
+            return True
+        if y % 100 == 0:
+            return False
+        if y % 4 == 0:
+            return True
+        else:
+            return False
+
+    # Initialize a string representing a range of years
+    text = "1981-1991"
+
+    # Print the range of years
+    print("Range of years:", text)
+
+    # Print a message indicating the counting of leap years within the specified range
+    print("Count the number of leap years within the said range:")
+
+    # Call the function to count and print the result
+    print(test(text))
+
+    # Repeat the process with a different range of years
+    text = "2000-2020"
+
+    # Print the range of years
+    print("\nRange of years:", text)
+
+    # Print a message indicating the counting of leap years within the specified range
+    print("Count the number of leap years within the said range:")
+
+    # Call the function to count and print the result
+    print(test(text)) 
+
+Sample Output:
+    Range of years: 1981-1991
+    Count  the number of leap years within the said range:
+    2
+    Range of years: 2000-2020
+    Count  the number of leap years within the said range:
+    6
 
 Sample Data:
-("1981-1991") -> 2
-("2000-2020") -> 6
+    ("1981-1991") -> 2
+    ("2000-2020") -> 6
 
 ------------------------------------------------------------------------------------------------
 110.Insert space before capital letters.
@@ -3540,11 +3944,72 @@ Sample Data:
     a given word.
 
 Ans.
+    # Define a function to insert a space before capital letters in a given word
+    def test(word):
+        result = ""
+        # Iterate through each character in the word
+        for i in word:
+            # Check if the character is uppercase
+            if i.isupper():
+                # Concatenate a space and the uppercase version of the character to the result
+                result = result + " " + i.upper()
+            else:
+                # Concatenate the character to the result
+                result = result + i
+        # Remove the leading space from the result and return
+        return result[1:]
+
+    # Initialize a string representing a word
+    word = "PythonExercises"
+
+    # Print the original word
+    print("Original Word:", word)
+
+    # Print a message indicating the insertion of space before capital letters
+    print("Insert space before capital letters in the said word:")
+
+    # Call the function to modify the word and print the result
+    print(test(word))
+
+    # Repeat the process with a different word
+    word = "Python"
+
+    # Print the original word
+    print("\nOriginal Word:", word)
+
+    # Print a message indicating the insertion of space before capital letters
+    print("Insert space before capital letters in the said word:")
+
+    # Call the function to modify the word and print the result
+    print(test(word))
+
+    # Repeat the process with a different word
+    word = "PythonExercisesPracticeSolution"
+
+    # Print the original word
+    print("\nOriginal Word:", word)
+
+    # Print a message indicating the insertion of space before capital letters
+    print("Insert space before capital letters in the said word:")
+
+    # Call the function to modify the word and print the result
+    print(test(word)) 
+
+Sample Output:
+    Original Word: PythonExercises
+    Insert space before capital letters in the said word:
+    Python Exercises
+    Original Word: Python
+    Insert space before capital letters in the said word:
+    Python
+    Original Word: PythonExercisesPracticeSolution
+    Insert space before capital letters in the said word:
+    Python Exercises Practice Solution
 
 Sample Data:
-("PythonExercises") -> "Python Exercises"
-("Python") -> "Python"
-("PythonExercisesPracticeSolution") -> "Python Exercises Practice Solution"
+    ("PythonExercises") -> "Python Exercises"
+    ("Python") -> "Python"
+    ("PythonExercisesPracticeSolution") -> "Python Exercises Practice Solution"
 
 ------------------------------------------------------------------------------------------------
 111.Replace chars with position numbers.
@@ -3552,11 +4017,65 @@ Sample Data:
     their respective numbers.
 
 Ans.
+    # Define a function to return the alphabet position of each letter in a given string
+    def test(text):
+        # Use a list comprehension to generate a list of alphabet positions for each alphabetic character
+        # Convert each character to lowercase and use the ord function to get its ASCII value, then subtract 96
+        return ' '.join(str(ord(i)-96) for i in text.lower() if i.isalpha())
+
+    # Initialize a string representing a word
+    word = "Python"
+
+    # Print the original word
+    print("Original Word:", word)
+
+    # Print a message indicating the alphabet position in the said string
+    print("Alphabet position in the said string:")
+
+    # Call the function to get the alphabet positions and print the result
+    print(test(word))
+
+    # Repeat the process with a different word
+    word = "Java"
+
+    # Print the original word
+    print("\nOriginal Word:", word)
+
+    # Print a message indicating the alphabet position in the said string
+    print("Alphabet position in the said string:")
+
+    # Call the function to get the alphabet positions and print the result
+    print(test(word))
+
+    # Repeat the process with a different word
+    word = "Python Tutorial"
+
+    # Print the original word
+    print("\nOriginal Word:", word)
+
+    # Print a message indicating the alphabet position in the said string
+    print("Alphabet position in the said string:")
+
+    # Call the function to get the alphabet positions and print the result
+    print(test(word)) 
+
+Sample Output:
+    Original Word: Python
+    Alphabet position in the said string:
+    16 25 20 8 15 14
+
+    Original Word: Java
+    Alphabet position in the said string:
+    10 1 22 1
+
+    Original Word: Python Tutorial
+    Alphabet position in the said string:
+    16 25 20 8 15 14 20 21 20 15 18 9 1 12
 
 Sample Data:
-("Python") -> "16 25 20 8 15 14"
-("Java") -> "10 1 22 1"
-("Python Tutorial") -> "16 25 20 8 15 14 20 21 20 15 18 9 1 12"
+    ("Python") -> "16 25 20 8 15 14"
+    ("Java") -> "10 1 22 1"
+    ("Python Tutorial") -> "16 25 20 8 15 14 20 21 20 15 18 9 1 12"
 
 ------------------------------------------------------------------------------------------------
 112.Add numbers given as strings.
@@ -3564,11 +4083,80 @@ Sample Data:
     Return the result in the same string representation.
 
 Ans.
+    # Define a function to add two numbers represented as strings
+    def test(x, y):
+        # Check if either x or y is an empty string, return False if true
+        if (x == "" or y == ""):
+            return False
+        
+        # Determine the maximum length between x and y
+        m = max(len(x), len(y))
+        c = 0  # Initialize carry to 0
+        result = ''  # Initialize the result string
+        
+        # Iterate through the digits of x and y from right to left
+        for x, y in zip(x.rjust(m, '0')[::-1], y.rjust(m, '0')[::-1]):
+            # Add the digits and the carry
+            s = int(x) + int(y) + c
+            # Update the carry for the next iteration
+            c = 1 if s > 9 else 0
+            # Append the last digit of the sum to the result
+            result += str(s)[-1]  
+        
+        # Add the final carry to the result if it is 1
+        result = result + str(c) if c == 1 else result
+        # Reverse the result and return
+        return result[::-1]
+
+    # Initialize two string numbers
+    n1 ="234242342341"
+    n2 ="2432342342"
+
+    # Print the original string numbers
+    print("Original string numbers:", n1, n2)
+
+    # Print a message indicating the addition of the two numbers
+    print("Check if said two strings represent numbers and add them:")
+    # Call the function to add the numbers and print the result
+    print(test(n1, n2))
+
+    # Repeat the process with different sets of string numbers
+    n1 =""
+    n2 ="2432342342"
+    print("\nOriginal string numbers:", n1, n2)
+    print("Check if said two strings represent numbers and add them:")
+    print(test(n1, n2))
+
+    n1 ="1000"
+    n2 ="0"
+    print("\nOriginal string numbers:", n1, n2)
+    print("Check if said two strings represent numbers and add them:")
+    print(test(n1, n2))
+
+    n1 ="1000"
+    n2 ="10"
+    print("\nOriginal string numbers:", n1, n2)
+    print("Check if said two strings represent numbers and add them:")
+    print(test(n1, n2)) 
+
+Sample Output:
+    Original string numbers: 234242342341 2432342342
+    Check said two strings contain three letters at the same index:
+    236674684683
+    Original string numbers:  2432342342
+    Check said two strings contain three letters at the same index:
+    False
+    Original string numbers: 1000 0
+    Check said two strings contain three letters at the same index:
+    1000
+    Original string numbers: 1000 10
+    Check said two strings contain three letters at the same index:
+    1010
 
 Sample Data:
-( "234242342341", "2432342342") -> "236674684683"
-( "", "2432342342") -> False ( "1000", "0") -> "1000"
-( "1000", "10") -> "1010"
+    ( "234242342341", "2432342342") -> "236674684683"
+    ( "", "2432342342") -> False ( "1000", "0") -> "1000"
+    ( "1000", "10") -> "1010"
 
 ------------------------------------------------------------------------------------------------
 113.Sort words alphabetically by first character.
@@ -3576,10 +4164,47 @@ Sample Data:
     character of a given string of words.
 
 Ans.
+    # Define a function that sorts words in a string based on their first character
+    def test(text):
+        # Split the input string into words, sort them based on the first character, and join them back into a string
+        return ' '.join(sorted(text.split(), key=lambda c: c[0]))
+
+    # Initialize a string with words
+    word = "Red Green Black White Pink"
+    # Print the original word
+    print("Original Word:", word)
+    # Print a message indicating sorting based on the first character
+    print("Sort the said string based on its first character:")
+    # Call the function to sort the words and print the result
+    print(test(word))
+
+    # Repeat the process with different strings
+    word = "Calculate the sum of two said numbers given as strings."
+    print("\nOriginal Word:", word)
+    print("Sort the said string based on its first character:")
+    print(test(word))
+
+    word = "The quick brown fox jumps over the lazy dog."
+    print("\nOriginal Word:", word)
+    print("Sort the said string based on its first character:")
+    print(test(word))
+
+Sample Output:
+    Original Word: Red Green Black White Pink
+    Sort the said string based on its first character:
+    Black Green Pink Red White
+
+    Original Word: Calculate the sum of two said numbers given as strings.
+    Sort the said string based on its first character:
+    Calculate as given numbers of sum said strings. the two
+
+    Original Word: The quick brown fox jumps over the lazy dog.
+    Sort the said string based on its first character:
+    The brown dog. fox jumps lazy over quick the
 
 Sample Data:
-("Red Green Black White Pink") -> "Black Green Pink Red White"
-("Calculate the sum of two said numbers given as strings.") -> ("Calculate as given numbers of sum said strings. the two")
-("The quick brown fox jumps over the lazy dog.") -> ("The brown dog. fox jumps lazy over quick the")
+    ("Red Green Black White Pink") -> "Black Green Pink Red White"
+    ("Calculate the sum of two said numbers given as strings.") -> ("Calculate as given numbers of sum said strings. the two")
+    ("The quick brown fox jumps over the lazy dog.") -> ("The brown dog. fox jumps lazy over quick the")
 
 ------------------------------------------------------------------------------------------------
