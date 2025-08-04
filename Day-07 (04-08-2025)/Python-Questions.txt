@@ -1,0 +1,3585 @@
+PYTHON ALGORITHM QUESTIONS:
+https://www.w3resource.com/python-exercises/string/
+------------------------------------------------------------------------------------------------
+001.Calculate string length.
+    Write a Python program to calculate the length of a string.
+Ans.
+    def string_length(str1):
+        # Initialize a variable called count to 0 to keep track of the string's length.
+        count = 0
+
+        # Iterate through each character in the input string str1.
+        for char in str1:
+            # For each character encountered, increment the count by 1.
+            count += 1
+
+        # Return the final count, which represents the length of the input string.
+        return count
+
+    # Call the string_length function with the argument 'w3resource.com' and print the result.
+    print(string_length('w3resource.com'))
+
+Sample Output:
+    14
+------------------------------------------------------------------------------------------------
+002.Count character frequency in a string.
+    Write a Python program to count the number of characters (character frequency) in a string.
+
+Ans.
+    # Define a function named char_frequency that takes one argument, str1.
+    def char_frequency(str1):
+        # Initialize an empty dictionary named 'dict' to store character frequencies.
+        dict = {}
+
+        # Iterate through each character 'n' in the input string str1.
+        for n in str1:
+            # Retrieve the keys (unique characters) in the 'dict' dictionary.
+            keys = dict.keys()
+
+            # Check if the character 'n' is already a key in the dictionary.
+            if n in keys:
+                # If 'n' is already a key, increment its value (frequency) by 1.
+                dict[n] += 1
+            else:
+                # If 'n' is not a key, add it to the dictionary with a frequency of 1.
+                dict[n] = 1
+
+        # Return the dictionary containing the frequency of each character in the input string.
+        return dict
+
+    # Call the char_frequency function with the argument 'google.com' and print the result.
+    print(char_frequency('google.com'))
+
+Result:
+    {'g': 2, 'o': 3, 'l': 1, 'e': 1, '.': 1, 'c': 1, 'm': 1}
+
+------------------------------------------------------------------------------------------------
+003.Get string of first and last 2 chars.
+    Write a Python program to get a string made of the first 2 and last 2 characters
+    of a given string. If the string length is less than 2, return the empty string instead.
+
+Ans.
+    # Define a function named string_both_ends that takes one argument, 'str'.
+    def string_both_ends(str):
+        # Check if the length of the input string 'str' is less than 2 characters.
+        if len(str) < 2:
+            # If the string is shorter than 2 characters, return an empty string.
+            return ''
+
+        # If the string has at least 2 characters, concatenate the first two characters
+        # and the last two characters of the input string and return the result.
+        return str[0:2] + str[-2:]
+
+    # Call the string_both_ends function with different input strings and print the results.
+    print(string_both_ends('w3resource'))  # Output: 'w3ce'
+    print(string_both_ends('w3'))          # Output: 'w3w3'
+    print(string_both_ends('w'))           # Output: ''
+
+Sample Output:
+    w3ce
+    w3w3
+
+------------------------------------------------------------------------------------------------
+004.Replace first char occurrences with $.
+    Write a Python program to get a string from a given string where all occurrences
+    of its first char have been changed to '$', except the first char itself.
+
+Ans.
+    # Define a function named change_char that takes one argument, 'str1'.
+    def change_char(str1):
+        # Get the first character of the input string 'str1' and store it in the variable 'char'.
+        char = str1[0]
+
+        # Replace all occurrences of the character 'char' with '$' in the 'str1' string.
+        str1 = str1.replace(char, '$')
+
+        # Reconstruct the 'str1' string by placing the original 'char' as the first character
+        # followed by the modified string starting from the second character.
+        str1 = char + str1[1:]
+
+        # Return the modified 'str1' string.
+        return str1
+
+    # Call the change_char function with the argument 'restart' and print the result.
+    print(change_char('restart'))  # Output: 'resta$t'
+
+Sample Output:
+    resta$t
+
+------------------------------------------------------------------------------------------------
+005.Swap first 2 chars of 2 strings.
+    Write a Python program to get a single string from two given strings, separated
+    by a space and swap the first two characters of each string.
+
+Ans.
+    # Define a function named chars_mix_up that takes two arguments, 'a' and 'b'.
+    def chars_mix_up(a, b):
+        # Create a new string 'new_a' by taking the first two characters from 'b' and combining
+        # them with the characters from 'a' starting from the third character.
+        new_a = b[:2] + a[2:]
+
+        # Create a new string 'new_b' by taking the first two characters from 'a' and combining
+        # them with the characters from 'b' starting from the third character.
+        new_b = a[:2] + b[2:]
+
+        # Concatenate 'new_a', a space character, and 'new_b' to create a single string.
+        return new_a + ' ' + new_b
+
+    # Call the chars_mix_up function with the arguments 'abc' and 'xyz' and print the result.
+    print(chars_mix_up('abc', 'xyz'))  # Output: 'xyc abz'
+
+Sample String : 'abc', 'xyz'
+Sample Output:
+    xyc abz
+
+------------------------------------------------------------------------------------------------
+006.Add ing or ly to a string.
+    Write a Python program to add 'ing' at the end of a given string (length should be
+    at least 3). If the given string already ends with 'ing', add 'ly' instead. If the
+    string length of the given string is less than 3, leave it unchanged.
+
+Ans.
+    # Define a function named add_string that takes one argument, 'str1'.
+    def add_string(str1):
+        # Get the length of the input string 'str1' and store it in the variable 'length'.
+        length = len(str1)
+
+        # Check if the length of 'str1' is greater than 2 characters.
+        if length > 2:
+            # If the last three characters of 'str1' are 'ing', add 'ly' to the end.
+            if str1[-3:] == 'ing':
+                str1 += 'ly'
+            else:
+                # If the last three characters are not 'ing', add 'ing' to the end.
+                str1 += 'ing'
+
+        # Return the modified 'str1'.
+        return str1
+
+    # Call the add_string function with different input strings and print the results.
+    print(add_string('ab'))      # Output: 'ab'
+    print(add_string('abc'))     # Output: 'abcing'
+    print(add_string('string'))  # Output: 'stringly'
+
+
+Sample Output:
+    Sample String : 'abc'
+    ab
+
+    Sample String : 'abc'
+    abcing
+
+    Sample String : 'string'
+    stringly
+
+------------------------------------------------------------------------------------------------
+007.Replace 'not'...'poor' with 'good'.
+    Write a Python program to find the first appearance of the substrings 'not' and
+    'poor' in a given string. If 'not' follows 'poor', replace the whole 'not'...'poor'
+    substring with 'good'. Return the resulting string.
+
+Ans.
+    # Define a function named not_poor that takes one argument, 'str1'.
+    def not_poor(str1):
+        # Find the index of the substring 'not' in the input string 'str1' and store it in 'snot'.
+        snot = str1.find('not')
+
+        # Find the index of the substring 'poor' in the input string 'str1' and store it in 'spoor'.
+        spoor = str1.find('poor')
+
+        # Check if 'poor' is found after 'not', and both 'not' and 'poor' are present in the string.
+        if spoor > snot and snot > 0 and spoor > 0:
+            # Replace the substring from 'snot' to 'spoor+4' (inclusive) with 'good'.
+            str1 = str1.replace(str1[snot:(spoor+4)], 'good')
+            return str1
+        else:
+            # If the conditions are not met, return the original 'str1'.
+            return str1
+
+    # Call the not_poor function with different input strings and print the results.
+    print(not_poor('The lyrics is not that poor!'))  # Output: 'The lyrics is good!'
+    print(not_poor('The lyrics is poor!'))           # Output: 'The lyrics is poor!'
+
+Sample Output:
+    The lyrics is good!
+    The lyrics is poor!
+
+------------------------------------------------------------------------------------------------
+008.Find longest word in a list.
+    Write a Python function that takes a list of words and return the longest word
+    and the length of the longest one.
+
+Ans.
+    # Define a function named find_longest_word that takes a list of words as the argument, 'words_list'.
+    def find_longest_word(words_list):
+        # Create an empty list 'word_len' to store pairs of word lengths and the corresponding words.
+        word_len = []
+
+        # Iterate through each word 'n' in the 'words_list'.
+        for n in words_list:
+            # Append a tuple containing the length of the word and the word itself to 'word_len'.
+            word_len.append((len(n), n))
+
+        # Sort the list 'word_len' based on the word lengths (ascending order).
+        word_len.sort()
+
+        # Return the length and the word of the last item in the sorted list (which is the longest word).
+        return word_len[-1][0], word_len[-1][1]
+
+    # Call the find_longest_word function with a list of words and store the result in 'result'.
+    result = find_longest_word(["PHP", "Exercises", "Backend"])
+
+    # Print the longest word and its length.
+    print("\nLongest word: ", result[1])
+    print("Length of the longest word: ", result[0])
+
+Sample Output:
+    Longest word:  Exercises
+    Length of the longest word:  9
+
+------------------------------------------------------------------------------------------------
+009.Remove nth character from a string.
+    Write a Python program to remove the nth index character from a nonempty string.
+
+Ans.
+    # Define a function named remove_char that takes two arguments, 'str' and 'n'.
+    def remove_char(str, n):
+        # Create a new string 'first_part' that includes all characters from the beginning of 'str' up to the character at index 'n' (not inclusive).
+        first_part = str[:n]
+
+        # Create a new string 'last_part' that includes all characters from the character at index 'n+1' to the end of 'str'.
+        last_part = str[n+1:]
+
+        # Return the result by concatenating 'first_part' and 'last_part', effectively removing the character at index 'n'.
+        return first_part + last_part
+
+    # Call the remove_char function with different input strings and character positions and print the results.
+    print(remove_char('Python', 0))  # Output: 'ython'
+    print(remove_char('Python', 3))  # Output: 'Pyton'
+    print(remove_char('Python', 5))  # Output: 'Pytho'
+
+Sample Output:
+    ython
+    Pyton
+    Pytho
+
+------------------------------------------------------------------------------------------------
+010.Swap first and last chars of a string.
+    Write a Python program to change a given string to a newly string where the first
+    and last chars have been exchanged.
+
+Ans.
+    # Define a function named change_string that takes one argument, 'str1'.
+    def change_string(str1):
+        # Return a modified version of the input string 'str1' by rearranging its characters.
+        # It takes the last character and moves it to the front, while keeping the middle characters unchanged.
+        return str1[-1:] + str1[1:-1] + str1[:1]
+
+    # Call the change_string function with different input strings and print the results.
+    print(change_string('abcd'))   # Output: 'dbca'
+    print(change_string('12345'))  # Output: '52341'
+
+Sample Output:
+    dbca
+    52341
+------------------------------------------------------------------------------------------------
+011.Remove odd index chars from a string.
+    Write a Python program to remove characters that have odd index values in a given string.
+
+Ans.
+    # Define a function named odd_values_string that takes one argument, 'str'.
+    def odd_values_string(str):
+        # Initialize an empty string 'result' to store characters with odd indices.
+        result = ""
+
+        # Iterate through the indices (i) of the characters in the input string 'str'.
+        for i in range(len(str)):
+            # Check if the index (i) is even (i.e., has a remainder of 0 when divided by 2).
+            if i % 2 == 0:
+                # If the index is even, append the character at that index to the 'result' string.
+                result = result + str[i]
+
+        # Return the 'result' string containing characters with odd indices.
+        return result
+
+    # Call the odd_values_string function with different input strings and print the results.
+    print(odd_values_string('abcdef'))  # Output: 'ace'
+    print(odd_values_string('python'))  # Output: 'pto'
+
+Sample Output:
+    ace
+    pto
+------------------------------------------------------------------------------------------------
+012.Count word occurrences in a sentence.
+    Write a Python program to count the occurrences of each word in a given sentence.
+
+Ans.
+    # Define a function named word_count that takes one argument, 'str'.
+    def word_count(str):
+        # Create an empty dictionary named 'counts' to store word frequencies.
+        counts = dict()
+
+        # Split the input string 'str' into a list of words using spaces as
+        # separators and store it in the 'words' list.
+        words = str.split()
+
+        # Iterate through each word in the 'words' list.
+        for word in words:
+            # Check if the word is already in the 'counts' dictionary.
+            if word in counts:
+                # If the word is already in the dictionary, increment its frequency by 1.
+                counts[word] += 1
+            else:
+                # If the word is not in the dictionary, add it to the dictionary
+                # with a frequency of 1.
+                counts[word] = 1
+
+        # Return the 'counts' dictionary, which contains word frequencies.
+        return counts
+
+    # Call the word_count function with an input sentence and print the results.
+    print( word_count('the quick brown fox jumps over the lazy dog.'))
+
+Sample Output:
+    {'the': 2, 'jumps': 1, 'brown': 1, 'lazy': 1, 'fox': 1, 'over': 1, 'quick': 1, 'dog.': 1}
+
+------------------------------------------------------------------------------------------------
+013.Display input in upper and lower case.
+    Write a Python script that takes input from the user and displays that input
+    back in upper and lower cases.
+
+Ans.
+    # Prompt the user to enter their favorite language and store the input in the variable 'user_input'.
+    user_input = input("What's your favorite language? ")
+
+    # Print the message "My favorite language is" followed by the user's input converted to uppercase.
+    print("My favorite language is ", user_input.upper())
+
+    # Print the message "My favorite language is" followed by the user's input converted to lowercase.
+    print("My favorite language is ", user_input.lower())
+
+Sample Output:
+    What's your favourite language? english
+    My favourite language is  ENGLISH
+    My favourite language is  english
+------------------------------------------------------------------------------------------------
+014.Sort distinct words in comma-separated input.
+    Write a Python program that accepts a comma-separated sequence of words as
+    input and prints the distinct words in sorted form (alphanumerically).
+
+Ans.
+    # Prompt the user to input a comma-separated sequence of words and store it
+    # in the variable 'items'.
+    items = input("Input comma-separated sequence of words")
+
+    # Split the input 'items' into a list of words by using the comma as the
+    # separator and store it in the 'words' list.
+    words = [word for word in items.split(",")]
+
+    # Convert the 'words' list into a set to remove any duplicate words,
+    # then convert it back to a list.
+    # Sort the resulting list alphabetically and join the words with commas.
+    # Finally, print the sorted and comma-separated list of unique words.
+    print(",".join(sorted(list(set(words)))))
+
+Sample Output:
+    Input comma separated sequence of words red, black, pink, green
+    black, green, pink, red
+
+------------------------------------------------------------------------------------------------
+015.Wrap word(s) in HTML tags.
+    Write a Python function to create an HTML string with tags around the word(s).
+
+Ans.
+    # Define a function named add_tags that takes two arguments, 'tag' and 'word'.
+    def add_tags(tag, word):
+        # Use string formatting to create and return a new string with the provided
+        # 'tag' enclosing the 'word'.
+        return "<%s>%s</%s>" % (tag, word, tag)
+
+    # Call the add_tags function with the tag 'i' and the word 'Python' and print the result.
+    print(add_tags('i', 'Python'))
+
+    # Call the add_tags function with the tag 'b' and the word 'Python Tutorial'
+    # and print the result.
+    print(add_tags('b', 'Python Tutorial'))
+
+Sample Output:
+    <i>Python</i>
+    <b>Python Tutorial</b>
+
+Sample function and result:
+    add_tags('i', 'Python') -> '<i>Python</i>'
+    add_tags('b', 'Python Tutorial') -> '<b>Python Tutorial </b>'
+
+------------------------------------------------------------------------------------------------
+016.Insert string into middle of another.
+    Write a Python function to insert a string in the middle of a string.
+
+Ans.
+    # Define a function named insert_string_middle that takes two arguments, 'str' and 'word'.
+    def insert_string_middle(str, word):
+        # Create and return a new string by concatenating the first two characters of 'str',
+        # followed by the 'word', and then the remaining characters of 'str' starting from
+        # the third character.
+        return str[:2] + word + str[2:]
+
+    # Call the insert_string_middle function with different input strings and words and
+    # print the results.
+    print(insert_string_middle('[[]]', 'Python'))  # Output: '[Python]'
+    print(insert_string_middle('{{}}', 'PHP'))     # Output: '{{PHP}}'
+    print(insert_string_middle('<<>>', 'HTML'))    # Output: '<>'
+
+Sample Output:
+    [[Python]]
+    {{PHP}}
+    <<HTML>>
+
+Sample function and result :
+    insert_sting_middle('[[]]<<>>', 'Python') -> [[Python]]
+    insert_sting_middle('{{}}', 'PHP') -> {{PHP}}
+
+------------------------------------------------------------------------------------------------
+017.Repeat last 2 chars of a string 4 times.
+    Write a Python function to get a string made of 4 copies of the last two characters
+    of a specified string (length must be at least 2).
+
+Ans.
+    # Define a function named insert_end that takes one argument, 'str'.
+    def insert_end(str):
+        # Extract the last two characters from the input string 'str' and store
+        # them in 'sub_str'.
+        sub_str = str[-2:]
+
+        # Multiply 'sub_str' by 4 and return the result, effectively repeating
+        # the last two characters four times.
+        return sub_str * 4
+
+    # Call the insert_end function with different input strings and print the results.
+    print(insert_end('Python'))    # Output: 'onononon'
+    print(insert_end('Exercises')) # Output: 'eseseses'
+
+Sample Output:
+    onononon
+    eseseses
+
+Sample function and result :
+    insert_end('Python') -> onononon
+    insert_end('Exercises') -> eseseses
+
+------------------------------------------------------------------------------------------------
+018.Get first 3 chars of a string.
+    Write a Python function to get a string made of the first three characters of a
+    specified string. If the length of the string is less than 3, return the original
+    string.
+
+Ans.
+    # Define a function named first_three that takes one argument, 'str'.
+    def first_three(str):
+        # Check if the length of the input string 'str' is greater than 3.
+        if len(str) > 3:
+            # If the string is longer than 3 characters, return the first three characters using slicing.
+            return str[:3]
+        else:
+            # If the string is 3 characters or shorter, return the entire string.
+            return str
+
+    # Call the first_three function with different input strings and print the results.
+    print(first_three('ipy'))      # Output: 'ipy'
+    print(first_three('python'))   # Output: 'pyt'
+    print(first_three('py'))       # Output: 'py'
+
+Sample Output:
+    ipy
+    pyt
+    py
+
+Sample function and result :
+    first_three('ipy') -> ipy
+    first_three('python') -> pyt
+
+------------------------------------------------------------------------------------------------
+019.Get substring before a specific character.
+    Write a Python program to get the last part of a string before a specified character.
+
+Ans.
+    # Define a variable 'str1' and assign it the value of the provided string.
+    str1 = 'https://www.w3resource.com/python-exercises/string'
+
+    # Use the rsplit() method with '/' as the separator to split the string from the right,
+    # and [0] to get the part before the last '/' character. Then, print the result.
+    print(str1.rsplit('/', 1)[0])  # Output: 'https://www.w3resource.com/python-exercises'
+
+    # Use the rsplit() method with '-' as the separator to split the string from the right,
+    # and [0] to get the part before the last '-' character. Then, print the result.
+    print(str1.rsplit('-', 1)[0])  # Output: 'https://www.w3resource.com/python'
+
+Sample Output:
+    https://www.w3resource.com/python-exercises
+    https://www.w3resource.com/python
+
+------------------------------------------------------------------------------------------------
+020.Reverse string if length is a multiple of 4.
+    Write a Python function to reverse a string if its length is a multiple of 4.
+
+Ans.
+
+------------------------------------------------------------------------------------------------
+021.Uppercase string if 2+ uppercase chars in first 4.
+    Write a Python function to convert a given string to all uppercase if it
+    contains at least 2 uppercase characters in the first 4 characters.
+
+Ans.
+    # Define a function named to_uppercase that takes one argument, 'str1'.
+    def to_uppercase(str1):
+        # Initialize a variable 'num_upper' to count the uppercase letters in
+        # the first 4 characters of 'str1'.
+        num_upper = 0
+
+        # Iterate through the first 4 characters of 'str1'.
+        for letter in str1[:4]:
+            # Check if the uppercase version of the letter is the same as the
+            # original letter.
+            if letter.upper() == letter:
+                # If they are the same, increment the 'num_upper' count.
+                num_upper += 1
+
+        # Check if the count of uppercase letters is greater than or equal to 2.
+        if num_upper >= 2:
+            # If there are 2 or more uppercase letters in the first 4 characters,
+            # return 'str1' in all uppercase.
+            return str1.upper()
+
+        # If there are fewer than 2 uppercase letters in the first 4 characters,
+        # return 'str1' as it is.
+        return str1
+
+    # Call the to_uppercase function with different input strings and print the results.
+    print(to_uppercase('Python'))  # Output: 'Python' (Not all uppercase)
+    print(to_uppercase('PyThon'))  # Output: 'PYTHON' (All uppercase)
+
+Sample Output:
+    Python
+    PYTHON
+------------------------------------------------------------------------------------------------
+022.Sort string lexicographically.
+    Write a Python program to sort a string lexicographically.
+
+Ans.
+    # Define a function named lexicographic_sort that takes one argument, 's'.
+    def lexicographic_sort(s):
+        # Use a nested sorting approach:
+        # 1. First, sort the characters of the string 's' in ascending order.
+        # 2. Then, sort the sorted characters based on their uppercase
+        #    representations (case-insensitive).
+        return sorted(sorted(s), key=str.upper)
+
+    # Call the lexicographic_sort function with different input strings and print the results.
+    print(lexicographic_sort('w3resource'))  # Output: '3ceeorrsuw'
+    print(lexicographic_sort('quickbrown'))  # Output: 'biknqorwuc'
+
+Sample Output:
+    ['3', 'c', 'e', 'e', 'o', 'r', 'r', 's', 'u', 'w']
+    ['b', 'c', 'i', 'k', 'n', 'o', 'q', 'r', 'u', 'w']
+------------------------------------------------------------------------------------------------
+023.Remove newline from a string.
+    Write a Python program to remove a newline in Python.
+
+Ans.
+    # Define a variable 'str1' and assign it the value 'Python Exercises' followed
+    # by a newline character.
+    str1 = 'Python Exercises\n'
+
+    # Print the value of 'str1', which includes a newline character, resulting in
+    # a new line in the output.
+    print(str1)
+
+    # Use the rstrip() method to remove trailing whitespace characters, including
+    # the newline character.
+    # Then, print the modified 'str1' with trailing whitespace removed.
+    print(str1.rstrip())
+
+Sample Output:
+    Python Exercises
+------------------------------------------------------------------------------------------------
+024.Check if string starts with specified chars.
+    Write a Python program to check whether a string starts with specified characters.
+
+Ans.
+    # Define a variable 'string' and assign it the value "w3resource.com".
+    string = "w3resource.com"
+
+    # Use the startswith() method to check if the string 'string' starts with
+    # the substring "w3r".
+    # The result is a boolean value, which is printed.
+    print(string.startswith("w3r"))
+
+Sample Output:
+    True
+------------------------------------------------------------------------------------------------
+025.Implement Caesar cipher encryption.
+    Write a Python program to create a Caesar encryption.
+
+    Note: In cryptography, a Caesar cipher, also known as Caesar's cipher, the
+    shift cipher, Caesar's code or Caesar shift, is one of the simplest and most
+    widely known encryption techniques. It is a type of substitution cipher in
+    which each letter in the plaintext is replaced by a letter some fixed number
+    of positions down the alphabet. For example, with a left shift of 3, D would
+    be replaced by A, E would become B, and so on. The method is named after
+    Julius Caesar, who used it in his private correspondence.
+
+Ans.
+    # https://gist.github.com/nchitalov/2f2b03e5cf1e19da1525
+    # Define a function named caesar_encrypt that takes two arguments, 'realText' and 'step'.
+    def caesar_encrypt(realText, step):
+        # Initialize two empty lists to store the output and the corresponding numeric values.
+        outText = []
+        cryptText = []
+
+        # Define lists for uppercase and lowercase letters of the English alphabet.
+        uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+        # Iterate through each letter in the 'realText' string.
+        for eachLetter in realText:
+            # Check if the letter is an uppercase letter.
+            if eachLetter in uppercase:
+                # Find the index of the letter in the 'uppercase' list.
+                index = uppercase.index(eachLetter)
+
+                # Perform Caesar cipher encryption by adding 'step' and taking the modulus 26.
+                crypting = (index + step) % 26
+                cryptText.append(crypting)
+
+                # Find the new letter corresponding to the encrypted value and append it to the 'outText' list.
+                newLetter = uppercase[crypting]
+                outText.append(newLetter)
+            # Check if the letter is a lowercase letter.
+            elif eachLetter in lowercase:
+                # Find the index of the letter in the 'lowercase' list.
+                index = lowercase.index(eachLetter)
+
+                # Perform Caesar cipher encryption by adding 'step' and taking the modulus 26.
+                crypting = (index + step) % 26
+                cryptText.append(crypting)
+
+                # Find the new letter corresponding to the encrypted value and append it to the 'outText' list.
+                newLetter = lowercase[crypting]
+                outText.append(newLetter)
+
+        # Return the 'outText' list containing the encrypted letters.
+        return outText
+
+    # Call the caesar_encrypt function with the input 'abc' and a step of 2, and store the result in 'code'.
+    code = caesar_encrypt('abc', 2)
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the 'code', which contains the result of the Caesar cipher encryption.
+    print(code)
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    ['c', 'd', 'e']
+------------------------------------------------------------------------------------------------
+026.Display formatted text (width=50).
+    Write a Python program to display formatted text (width=50) as output.
+
+Ans.
+    # Import the 'textwrap' module, which provides text formatting capabilities.
+    import textwrap
+
+    # Define a multi-line string 'sample_text' with a text content.
+    sample_text = '''
+      Python is a widely used high-level, general-purpose, interpreted,
+      dynamic programming language. Its design philosophy emphasizes
+      code readability, and its syntax allows programmers to express
+      concepts in fewer lines of code than possible in languages such
+      as C++ or Java.
+      '''
+
+    # Print an empty line for spacing.
+    print()
+
+    # Use the 'textwrap.fill' function to format the 'sample_text' with a line
+    # width of 50 characters.
+    # This function wraps the text to fit within the specified width and prints the result.
+    print(textwrap.fill(sample_text, width=50))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Python is a widely used high-level, general-
+    purpose, interpreted,   dynamic programming
+    language. Its design philosophy emphasizes   code
+    readability, and its syntax allows programmers to
+    express   concepts in fewer lines of code than
+    possible in languages such   as C++ or Java.
+------------------------------------------------------------------------------------------------
+027.Remove indentation from text.
+    Write a Python program to remove existing indentation from all of the
+    lines in a given text.
+
+Ans.
+    import textwrap
+    sample_text = '''
+        Python is a widely used high-level, general-purpose, interpreted,
+        dynamic programming language. Its design philosophy emphasizes
+        code readability, and its syntax allows programmers to express
+        concepts in fewer lines of code than possible in languages such
+        as C++ or Java.
+        '''
+    text_without_Indentation = textwrap.dedent(sample_text)
+    print()
+    print(text_without_Indentation )
+    print()
+
+Sample Output:
+    Python is a widely used high-level, general-purpose, interpreted,
+    dynamic programming language. Its design philosophy emphasizes
+    code readability, and its syntax allows programmers to express
+    concepts in fewer lines of code than possible in languages such
+    as C++ or Java.
+------------------------------------------------------------------------------------------------
+028.Add prefix to each line of text.
+    Write a Python program to add prefix text to all of the lines in a string.
+
+Ans.
+    # Import the 'textwrap' module, which provides text formatting capabilities.
+    import textwrap
+
+    # Define a multi-line string 'sample_text' with text content that includes indentation.
+    sample_text = '''
+        Python is a widely used high-level, general-purpose, interpreted,
+        dynamic programming language. Its design philosophy emphasizes
+        code readability, and its syntax allows programmers to express
+        concepts in fewer lines of code than possible in languages such
+        as C++ or Java.
+        '''
+
+    # Use 'textwrap.dedent' to remove the common leading whitespace (indentation) from 'sample_text'.
+    text_without_Indentation = textwrap.dedent(sample_text)
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the 'text_without_Indentation', which is the 'sample_text' with indentation removed.
+    print(text_without_Indentation)
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    > Python is a widely used high-level, general-
+    > purpose, interpreted, dynamic programming
+    > language. Its design philosophy emphasizes code
+    > readability, and its syntax allows programmers to
+    > express concepts in fewer lines of code than
+    > possible in languages such as C++ or Java.
+------------------------------------------------------------------------------------------------
+029.Set first line indentation.
+    Write a Python program to set the indentation of the first line.
+
+Ans.
+    # Import the 'textwrap' module, which provides text formatting capabilities.
+    import textwrap
+
+    # Define a multi-line string 'sample_text' with text content.
+    sample_text ='''
+    Python is a widely used high-level, general-purpose, interpreted, dynamic
+    programming language. Its design philosophy emphasizes code readability,
+    and its syntax allows programmers to express concepts in fewer lines of
+    code than possible in languages such as C++ or Java.
+    '''
+
+    # Use 'textwrap.dedent' to remove common leading whitespace and 'strip' to
+    # remove any trailing whitespace.
+    text1 = textwrap.dedent(sample_text).strip()
+
+    # Print an empty line for spacing.
+    print()
+
+    # Use 'textwrap.fill' to format and wrap the 'text1' string to a line width of 80 characters.
+    # The 'initial_indent' and 'subsequent_indent' parameters control the indentation, which is adjusted here.
+    print(textwrap.fill(text1,
+                        initial_indent='',
+                        subsequent_indent=' ' * 4,
+                        width=80,
+                        ))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Python is a widely used high-level, general-purpose, interpreted, dynamic
+        programming language. Its design philosophy emphasizes code readability, and
+        its syntax allows programmers to express concepts in fewer lines of code
+        than possible in languages such as C++ or Java.
+
+------------------------------------------------------------------------------------------------
+030.Print numbers with 2 decimal places.
+    Write a Python program to print the following numbers up to 2 decimal places.
+
+Ans.
+    # Define a variable 'x' and assign it the value 3.1415926 (a floating-point number).
+    x = 3.1415926
+
+    # Define a variable 'y' and assign it the value 12.9999 (a floating-point number).
+    y = 12.9999
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the original value of 'x' with a label.
+    print("Original Number: ", x)
+
+    # Format the value of 'x' to two decimal places and print it with a label.
+    print("Formatted Number: "+"{:.2f}".format(x))
+
+    # Print the original value of 'y' with a label.
+    print("Original Number: ", y)
+
+    # Format the value of 'y' to two decimal places and print it with a label.
+    print("Formatted Number: "+"{:.2f}".format(y))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Original Number:  3.1415926
+    Formatted Number: 3.14
+    Original Number:  12.9999
+    Formatted Number: 13.00
+------------------------------------------------------------------------------------------------
+031.Print numbers with sign (2 decimals).
+    Write a Python program to print the following numbers up to 2 decimal places with a sign.
+
+Ans.
+    # Define a variable 'x' and assign it the value 3.1415926
+    # (a positive floating-point number).
+    x = 3.1415926
+
+    # Define a variable 'y' and assign it the value -12.9999
+    # (a negative floating-point number).
+    y = -12.9999
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the original value of 'x' with a label.
+    print("Original Number: ", x)
+
+    # Format the value of 'x' to two decimal places and include a sign
+    # (positive or negative) in the result.
+    print("Formatted Number with sign: "+"{:+.2f}".format(x))
+
+    # Print the original value of 'y' with a label.
+    print("Original Number: ", y)
+
+    # Format the value of 'y' to two decimal places and include a sign
+    # (positive or negative) in the result.
+    print("Formatted Number with sign: "+"{:+.2f}".format(y))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Original Number:  3.1415926
+    Formatted Number with sign: +3.14
+    Original Number:  -12.9999
+    Formatted Number with sign: -13.00
+------------------------------------------------------------------------------------------------
+032.Print numbers without decimal places.
+    Write a Python program to print the following positive and negative numbers with
+    no decimal places.
+
+Ans.
+    # Define a variable 'x' and assign it the value 3.1415926
+    # (a positive floating-point number).
+    x = 3.1415926
+
+    # Define a variable 'y' and assign it the value -12.9999
+    # (a negative floating-point number).
+    y = -12.9999
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the original value of 'x' with a label.
+    print("Original Number: ", x)
+
+    # Format the value of 'x' with no decimal places and print it.
+    print("Formatted Number with no decimal places: "+"{:.0f}".format(x))
+
+    # Print the original value of 'y' with a label.
+    print("Original Number: ", y)
+
+    # Format the value of 'y' with no decimal places and print it.
+    print("Formatted Number with no decimal places: "+"{:.0f}".format(y))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Original Number:  3.1415926
+    Formatted Number with no decimal places: 3
+    Original Number:  -12.9999
+    Formatted Number with no decimal places: -13
+------------------------------------------------------------------------------------------------
+033.Print integers with left-padded zeros.
+    Write a Python program to print the following integers with zeros to the left of
+    the specified width.
+
+Ans.
+    # Define a variable 'x' and assign it the value 3 (an integer).
+    x = 3
+
+    # Define a variable 'y' and assign it the value 123 (an integer).
+    y = 123
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the original value of 'x' with a label.
+    print("Original Number: ", x)
+
+    # Format the value of 'x' with left padding using zeros to a width of
+    # 2 characters and print it.
+    print("Formatted Number (left padding, width 2): "+"{:0>2d}".format(x))
+
+    # Print the original value of 'y' with a label.
+    print("Original Number: ", y)
+
+    # Format the value of 'y' with left padding using zeros to a width of
+    # 6 characters and print it.
+    print("Formatted Number (left padding, width 6): "+"{:0>6d}".format(y))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Original Number:  3
+    Formatted Number(left padding, width 2): 03
+    Original Number:  123
+    Formatted Number(left padding, width 6): 000123
+------------------------------------------------------------------------------------------------
+034.Print integers with * right-padded.
+    Write a Python program to print the following integers with '*' to the right of
+    the specified width.
+
+Ans.
+    # Define a variable 'x' and assign it the value 3 (an integer).
+    x = 3
+
+    # Define a variable 'y' and assign it the value 123 (an integer).
+    y = 123
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the original value of 'x' with a label.
+    print("Original Number: ", x)
+
+    # Format the value of 'x' with right padding using asterisks and a width of
+    # 3 characters, and print it.
+    print("Formatted Number (right padding, width 2): "+"{:*< 3d}".format(x))
+
+    # Print the original value of 'y' with a label.
+    print("Original Number: ", y)
+
+    # Format the value of 'y' with right padding using asterisks and a width of
+    # 7 characters, and print it.
+    print("Formatted Number (right padding, width 6): "+"{:*< 7d}".format(y))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Original Number:  3
+    Formatted Number(right padding, width 2): 3*
+    Original Number:  123
+    Formatted Number(right padding, width 6): 123***
+------------------------------------------------------------------------------------------------
+035.Display number with comma separator.
+    Write a Python program to display a number with a comma separator.
+
+Ans.
+    # Define a variable 'x' and assign it the value 3,000,000 (an integer).
+    x = 3000000
+
+    # Define a variable 'y' and assign it the value 30,000,000 (an integer).
+    y = 30000000
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the original value of 'x' with a label.
+    print("Original Number: ", x)
+
+    # Format the value of 'x' with a comma separator for thousands and print it.
+    print("Formatted Number with comma separator: "+"{:,}".format(x))
+
+    # Print the original value of 'y' with a label.
+    print("Original Number: ", y)
+
+    # Format the value of 'y' with a comma separator for thousands and print it.
+    print("Formatted Number with comma separator: "+"{:,}".format(y))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Original Number:  3000000
+    Formatted Number with comma separator: 3,000,000
+    Original Number:  30000000
+    Formatted Number with comma separator: 30,000,000
+------------------------------------------------------------------------------------------------
+036.Format number as percentage.
+    Write a Python program to format a number with a percentage.
+
+Ans.
+    # Define a variable 'x' and assign it the value 0.25 (a floating-point number).
+    x = 0.25
+
+    # Define a variable 'y' and assign it the value -0.25 (a floating-point number).
+    y = -0.25
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the original value of 'x' with a label.
+    print("Original Number: ", x)
+
+    # Format the value of 'x' as a percentage with two decimal places and print it.
+    print("Formatted Number with percentage: "+"{:.2%}".format(x))
+
+    # Print the original value of 'y' with a label.
+    print("Original Number: ", y)
+
+    # Format the value of 'y' as a percentage with two decimal places and print it.
+    print("Formatted Number with percentage: "+"{:.2%}".format(y))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Original Number:  0.25
+    Formatted Number with percentage: 25.00%
+    Original Number:  -0.25
+    Formatted Number with percentage: -25.00%
+------------------------------------------------------------------------------------------------
+037.Align number left, right, center (width=10).
+    Write a Python program to display a number in left, right, and center aligned
+    with a width of 10.
+
+Ans.
+    # Define a variable 'x' and assign it the value 22 (an integer).
+    x = 22
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the original value of 'x' with a label.
+    print("Original Number: ", x)
+
+    # Format and print the value of 'x' with left alignment, a width of 10 characters,
+    # and padding using spaces.
+    print("Left aligned (width 10)   :"+"{:< 10d}".format(x))
+
+    # Format and print the value of 'x' with right alignment, a width of 10 characters,
+    # and padding using spaces.
+    print("Right aligned (width 10)  :"+"{:10d}".format(x))
+
+    # Format and print the value of 'x' with center alignment, a width of 10 characters,
+    # and padding using spaces.
+    print("Center aligned (width 10) :"+"{:^10d}".format(x))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Original Number:  22
+    Left aligned (width 10)   :22
+    Right aligned (width 10)  :        22
+    Center aligned (width 10) :    22
+
+------------------------------------------------------------------------------------------------
+038.Count substring occurrences in string.
+    Write a Python program to count occurrences of a substring in a string.
+
+Ans.
+    # Define a string 'str1' with a sentence.
+    str1 = 'The quick brown fox jumps over the lazy dog.'
+
+    # Print an empty line for spacing.
+    print()
+
+    # Count and print the number of occurrences of the substring "fox" in the string 'str1'.
+    print(str1.count("fox"))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    1
+
+------------------------------------------------------------------------------------------------
+039.Reverse a string.
+    Write a Python program to reverse a string.
+
+Ans.
+    # Define a function 'reverse_string' that takes a string 'str1' as input.
+    # The function returns the reversed version of the input string.
+    def reverse_string(str1):
+        return ''.join(reversed(str1))
+
+    # Print an empty line for spacing.
+    print()
+
+    # Call the 'reverse_string' function with the input "abcdef", reverse the string,
+    # and print the result.
+    print(reverse_string("abcdef"))
+
+    # Call the 'reverse_string' function with the input "Python Exercises.",
+    # reverse the string, and print the result.
+    print(reverse_string("Python Exercises."))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    fedcba
+    .sesicrexE nohtyP
+
+------------------------------------------------------------------------------------------------
+040.Reverse words in a string.
+    Write a Python program to reverse words in a string.
+
+Ans.
+    # Define a function 'reverse_string_words' that takes a string 'text' as input.
+    # The function splits the input text into lines, reverses the words within each line, and returns the result.
+    def reverse_string_words(text):
+        for line in text.split('\n'):
+            return(' '.join(line.split()[::-1]))
+
+    # Call the 'reverse_string_words' function with the input "The quick brown fox jumps over the lazy dog.",
+    # reverse the words in the string, and print the result.
+    print(reverse_string_words("The quick brown fox jumps over the lazy dog."))
+
+    # Call the 'reverse_string_words' function with the input "Python Exercises.",
+    # reverse the words in the string, and print the result.
+    print(reverse_string_words("Python Exercises."))
+
+Sample Output:
+    dog. lazy the over jumps fox brown quick The
+    Exercises. Python
+
+------------------------------------------------------------------------------------------------
+041.Strip specific characters from string.
+    Write a Python program to strip a set of characters from a string.
+
+Ans.
+    # Define a function 'strip_chars' that takes a string 'str' and a string 'chars' as input.
+    # The function returns a new string containing characters from 'str' that
+    # are not in 'chars'.
+    def strip_chars(str, chars):
+        return "".join(c for c in str if c not in chars)
+
+    # Print an empty line for spacing.
+    print()
+
+    # Print the original string.
+    print("Original String: ")
+    print("The quick brown fox jumps over the lazy dog.")
+
+    # Print a message indicating the characters to be stripped from the string.
+    print("After stripping a, e, i, o, u")
+
+    # Call the 'strip_chars' function with the input string and the characters to strip,
+    # and then print the result.
+    print(strip_chars("The quick brown fox jumps over the lazy dog.", "aeiou"))
+
+    # Print an empty line for spacing.
+    print()
+
+Sample Output:
+    Original String:
+        The quick brown fox jumps over the lazy dog.
+    After stripping a,e,i,o,u
+        Th qck brwn fx jmps vr th lzy dg.
+
+------------------------------------------------------------------------------------------------
+042.Count repeated characters in string.
+    Write a Python program to count repeated characters in a string.
+
+Ans.
+    # Import the 'collections' module to use the 'defaultdict' class.
+    import collections
+
+    # Define a string 'str1' with a sentence.
+    str1 = 'thequickbrownfoxjumpsoverthelazydog'
+
+    # Create a defaultdict 'd' with integer values as the default type.
+    d = collections.defaultdict(int)
+
+    # Iterate through each character in the string 'str1'.
+    # Update the counts of each character in the 'd' dictionary.
+    for c in str1:
+        d[c] += 1
+
+    # Iterate through the characters in 'd' in descending order of their counts.
+    for c in sorted(d, key=d.get, reverse=True):
+        # Check if the character occurs more than once.
+        if d[c] > 1:
+            # Print the character and its count.
+            print('%s %d' % (c, d[c]))
+
+Sample Output:
+    o 4
+    e 3
+    h 2
+    t 2
+    r 2
+    u 2
+
+Sample string: 'thequickbrownfoxjumpsoverthelazydog'
+Expected output :
+    o 4
+    e 3
+    u 2
+    h 2
+    r 2
+    t 2
+
+------------------------------------------------------------------------------------------------
+043.Print area (rectangle) and volume (cylinder).
+    Write a Python program to print the square and cube symbols in the area of
+    a rectangle and the volume of a cylinder.
+
+Ans.
+    # Define the area and volume as floating-point numbers.
+    area = 1256.66
+    volume = 1254.725
+
+    # Define the number of decimals for formatting.
+    decimals = 2
+
+    # Print the area of the rectangle with formatting and the specified number of decimals.
+    print("The area of the rectangle is {0:.{1}f}cm\u00b2".format(area, decimals))
+
+    # Update the number of decimals for formatting.
+    decimals = 3
+
+    # Print the volume of the cylinder with formatting and the specified number of decimals.
+    print("The volume of the cylinder is {0:.{1}f}cm\u00b3".format(volume, decimals))
+
+Sample Output:
+    The area of the rectangle is 1256.66cm²
+    The volume of the cylinder is 1254.725cm³
+------------------------------------------------------------------------------------------------
+044.Find character indices in string.
+    Write a Python program to print the index of a character in a string.
+
+Ans.
+    # Define a string 'str1'.
+    str1 = "w3resource"
+
+    # Iterate through the characters of the string using enumeration.
+    # 'index' contains the position of the character, and 'char' contains the character itself.
+    for index, char in enumerate(str1):
+        # Print the current character, its position, and a descriptive message.
+        print("Current character", char, "position at", index)
+
+Sample string: w3resource
+Sample Output:
+    Current character w position at 0
+    Current character 3 position at 1
+    Current character r position at 2
+    Current character e position at 3
+    Current character s position at 4
+    Current character o position at 5
+    Current character u position at 6
+    Current character r position at 7
+    Current character c position at 8
+    Current character e position at 9
+
+------------------------------------------------------------------------------------------------
+045.Check if string has all alphabet letters.
+    Write a Python program to check whether a string contains all letters of the alphabet.
+
+Ans.
+    # Import the 'string' module to access the lowercase alphabet.
+    import string
+
+    # Create a set 'alphabet' containing all lowercase letters using 'string.ascii_lowercase'.
+    alphabet = set(string.ascii_lowercase)
+
+    # Define an input string.
+    input_string = 'The quick brown fox jumps over the lazy dog'
+
+    # Check if the set of lowercase characters in the input string contains all the
+    # letters of the alphabet.
+    # Print the result (True or False).
+    print(set(input_string.lower()) >= alphabet)
+
+    # Update the input string.
+    input_string = 'The quick brown fox jumps over the lazy cat'
+
+    # Check if the set of lowercase characters in the updated input string contains
+    # all the letters of the alphabet.
+    # Print the result (True or False).
+    print(set(input_string.lower()) >= alphabet)
+
+Sample Output:
+    True
+    False
+
+------------------------------------------------------------------------------------------------
+046.Convert string to list of words.
+    Write a Python program to convert a given string into a list of words.
+
+Ans.
+    # Define a string 'str1'.
+    str1 = "The quick brown fox jumps over the lazy dog."
+
+    # Split the string into a list of words using the space character as the
+    # separator and print the result.
+    print(str1.split(' '))
+
+    # Update the string 'str1'.
+    str1 = "The-quick-brown-fox-jumps-over-the-lazy-dog."
+
+    # Split the updated string into a list of words using the hyphen character
+    # as the separator and print the result.
+    print(str1.split('-'))
+
+Sample Output:
+    ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog.']
+    ['The', 'quick', 'brown', 'fox', 'jumps', 'over', 'the', 'lazy', 'dog.']
+
+------------------------------------------------------------------------------------------------
+047.Lowercase first n characters of string.
+    Write a Python program to lowercase the first n characters in a string.
+
+Ans.
+    # Define a string 'str1'.
+    str1 = 'W3RESOURCE.COM'
+
+    # Convert the first four characters of the string to lowercase and concatenate
+    # them with the remaining characters. Print the modified string.
+    print(str1[:4].lower() + str1[4:])
+
+Sample Output:
+    w3reSOURCE.COM
+
+------------------------------------------------------------------------------------------------
+048.Swap commas and dots in a string.
+    Write a Python program to swap commas and dots in a string.
+
+Ans.
+    # Define a string 'amount' with a numerical value in a specific format.
+    amount = "32.054,23"
+
+    # Create a variable 'maketrans' that references the 'maketrans' method of the
+    # 'amount' string.
+    maketrans = amount.maketrans
+
+    # Translate (replace) the characters ',' with '.', and '.' with ',' in the
+    # 'amount' string using the 'maketrans' variable.
+    amount = amount.translate(maketrans(',.', '.,'))
+
+    # Print the modified 'amount' string with the swapped decimal and comma characters.
+    print(amount)
+
+Sample Output:
+    32,054.23
+
+Sample string: "32.054,23"
+Expected Output: "32,054.23"
+
+------------------------------------------------------------------------------------------------
+049.Count and display vowels in text.
+    Write a Python program to count and display vowels in text.
+
+Ans.
+    # Define a function 'vowel' that takes a string 'text' as input.
+    def vowel(text):
+        # Define a string 'vowels' containing all lowercase and uppercase vowels.
+        vowels = "aeiouAEIOU"
+
+        # Print the number of vowels in the input string 'text' using a list comprehension.
+        print(len([letter for letter in text if letter in vowels]))
+
+        # Print a list of vowels found in the input string 'text' using a list comprehension.
+        print([letter for letter in text if letter in vowels])
+
+    # Call the 'vowel' function with the input string 'w3resource'.
+    vowel('w3resource')
+
+Sample Output:
+    4
+    ['e', 'o', 'u', 'e']
+
+------------------------------------------------------------------------------------------------
+050.Split string on last delimiter occurrence.
+    Write a Python program to split a string on the last occurrence of the delimiter.
+
+Ans.
+    # Define a string 'str1' containing a comma-separated list of characters.
+    str1 = "w,3,r,e,s,o,u,r,c,e"
+
+    # Split the string 'str1' into a list of substrings using the ',' separator,
+    # starting from the right.
+    # Split at most 1 time and print the result.
+    print(str1.rsplit(',', 1))
+
+    # Split the string 'str1' into a list of substrings using the ',' separator,
+    # starting from the right.
+    # Split at most 2 times and print the result.
+    print(str1.rsplit(',', 2))
+
+    # Split the string 'str1' into a list of substrings using the ',' separator,
+    # starting from the right.
+    # Split at most 5 times and print the result.
+    print(str1.rsplit(',', 5))
+
+Sample Output:
+    ['w,3,r,e,s,o,u,r,c', 'e']
+    ['w,3,r,e,s,o,u,r', 'c', 'e']
+    ['w,3,r,e,s', 'o', 'u', 'r', 'c', 'e']
+
+------------------------------------------------------------------------------------------------
+051.Find first non-repeating character.
+    Write a Python program to find the first non-repeating character in a given string.
+
+Ans.
+    # Define a function 'first_non_repeating_character' that takes a string 'str1' as input.
+    def first_non_repeating_character(str1):
+        # Create an empty list 'char_order' to store the order of characters encountered.
+        char_order = []
+
+        # Create an empty dictionary 'ctr' to count the occurrences of each character.
+        ctr = {}
+
+        # Iterate through each character 'c' in the input string 'str1'.
+        for c in str1:
+            # Check if the character 'c' is already in the 'ctr' dictionary.
+            if c in ctr:
+                # If it is, increment the count for that character.
+                ctr[c] += 1
+            else:
+                # If it's not, add it to the 'ctr' dictionary and the 'char_order' list.
+                ctr[c] = 1
+                char_order.append(c)
+
+        # Iterate through the characters in 'char_order'.
+        for c in char_order:
+            # Check if the character 'c' has a count of 1 (non-repeating).
+            if ctr[c] == 1:
+                return c  # Return the first non-repeating character.
+
+        return None  # Return None if there are no non-repeating characters.
+
+    # Call the 'first_non_repeating_character' function with different input strings
+    # and print the results.
+    print(first_non_repeating_character('abcdef'))
+    print(first_non_repeating_character('abcabcdef'))
+    print(first_non_repeating_character('aabbcc'))
+
+Sample Output:
+    a
+    d
+    None
+
+------------------------------------------------------------------------------------------------
+052.Permutations with repetition in string.
+    Write a Python program to print all permutations with a given repetition number of characters of a given string.
+
+Ans.
+    # Import the 'product' function from the 'itertools' module.
+    from itertools import product
+
+    # Define a function 'all_repeat' that takes a string 'str1' and an integer 'rno' as input.
+    def all_repeat(str1, rno):
+        # Convert the input string 'str1' to a list of characters.
+        chars = list(str1)
+
+        # Create an empty list 'results' to store the combinations of characters.
+        results = []
+
+        # Generate all possible combinations of characters from 'chars' with a length of 'rno'.
+        for c in product(chars, repeat=rno):
+            results.append(c)
+
+        # Return the list of generated combinations.
+        return results
+
+    # Call the 'all_repeat' function with different inputs and print the results.
+    print(all_repeat('xyz', 3))
+    print(all_repeat('xyz', 2))
+    print(all_repeat('abcd', 4))
+
+Sample Output:
+    [('x', 'x', 'x'), ('x', 'x', 'y'), ('x', 'x', 'z'), ('x', 'y', 'x'), ('x', 'y', 'y'), ('x', 'y', 'z'), ('x', 'z', 'x'), ('x', 'z', 'y'), ('x', 'z', 'z'), ('y', 'x', 'x'), ('y', 'x', 'y'), ('y', 'x', 'z'), ('y', 'y', 'x'), ('y', 'y', 'y'), ('y', 'y', 'z'), ('y', 'z', 'x'), ('y', 'z', 'y'), ('y', 'z', 'z'), ('z', 'x', 'x'), ('z', 'x', 'y'), ('z', 'x', 'z'), ('z', 'y', 'x'), ('z', 'y', 'y'), ('z', 'y', 'z'), ('z', 'z', 'x'), ('z', 'z', 'y'), ('z', 'z', 'z')]
+    [('x', 'x'), ('x', 'y'), ('x', 'z'), ('y', 'x'), ('y', 'y'), ('y', 'z'), ('z', 'x'), ('z', 'y'), ('z', 'z')]
+    [('a', 'a', 'a', 'a'), ('a', 'a', 'a', 'b'), ('a', 'a', 'a', 'c'), ('a', 'a', 'a', 'd'), ('a', 'a', 'b', 'a'), ('a', 'a', 'b', 'b'), ('a', 'a', 'b', 'c'), ('a', 'a', 'b', 'd'), ('a', 'a', 'c', 'a'), ('a', 'a', 'c', 'b'), ('a', 'a', 'c', 'c'), ('a', 'a', 'c', 'd'), ('a', 'a', 'd', 'a'), ('a', 'a', 'd', 'b'), ('a', 'a', 'd', 'c'), ('a', 'a', 'd', 'd'), ('a', 'b', 'a', 'a'), ('a', 'b', 'a', 'b'), ('a', 'b', 'a', 'c'), ('a', 'b', 'a', 'd'), ('a', 'b', 'b', 'a'), ('a', 'b', 'b', 'b'), ('a', 'b', 'b', 'c'), ('a', 'b', 'b', 'd'), ('a', 'b', 'c', 'a'), ('a', 'b', 'c', 'b'), ('a', 'b', 'c', 'c'), ('a', 'b', 'c', 'd'), ('a', 'b', 'd', 'a'), ('a', 'b', 'd', 'b'), ('a', 'b', 'd', 'c'), ('a', 'b', 'd', 'd'), ('a', 'c', 'a', 'a'), ('a', 'c', 'a', 'b'), ('a', 'c', 'a', 'c'), ('a', 'c', 'a', 'd'), ('a', 'c', 'b', 'a'), ('a', 'c', 'b', 'b'), ('a', 'c', 'b', 'c'), ('a', 'c', 'b', 'd'), ('a', 'c', 'c', 'a'), ('a', 'c', 'c', 'b'), ('a', 'c', 'c', 'c'), ('a', 'c', 'c', 'd'), ('a', 'c', 'd', 'a'), ('a', 'c', 'd', 'b'), ('a', 'c', 'd', 'c'), ('a', 'c', 'd', 'd'), ('a', 'd', 'a', 'a'), ('a', 'd', 'a', 'b'), ('a', 'd', 'a', 'c'), ('a', 'd', 'a', 'd'), ('a', 'd', 'b', 'a'), ('a', 'd', 'b', 'b'), ('a', 'd', 'b', 'c'), ('a', 'd', 'b', 'd'), ('a', 'd', 'c', 'a'), ('a', 'd', 'c', 'b'), ('a', 'd', 'c', 'c'), ('a', 'd', 'c', 'd'), ('a', 'd', 'd', 'a'), ('a', 'd', 'd', 'b'), ('a', 'd', 'd', 'c'), ('a', 'd', 'd', 'd'), ('b', 'a', 'a', 'a'), ('b', 'a', 'a', 'b'), ('b', 'a', 'a', 'c'), ('b', 'a', 'a', 'd'), ('b', 'a', 'b', 'a'), ('b', 'a', 'b', 'b'), ('b', 'a', 'b', 'c'), ('b', 'a', 'b', 'd'), ('b', 'a', 'c', 'a'), ('b', 'a', 'c', 'b'), ('b', 'a', 'c', 'c'), ('b', 'a', 'c', 'd'), ('b', 'a', 'd', 'a'), ('b', 'a', 'd', 'b'), ('b', 'a', 'd', 'c'), ('b', 'a', 'd', 'd'), ('b', 'b', 'a', 'a'), ('b', 'b', 'a', 'b'), ('b', 'b', 'a', 'c'), ('b', 'b', 'a', 'd'), ('b', 'b', 'b', 'a'), ('b', 'b', 'b', 'b'), ('b', 'b', 'b', 'c'), ('b', 'b', 'b', 'd'), ('b', 'b', 'c', 'a'), ('b', 'b', 'c', 'b'), ('b', 'b', 'c', 'c'), ('b', 'b', 'c', 'd'), ('b', 'b', 'd', 'a'), ('b', 'b', 'd', 'b'), ('b', 'b', 'd', 'c'), ('b', 'b', 'd', 'd'), ('b', 'c', 'a', 'a'), ('b', 'c', 'a', 'b'), ('b', 'c', 'a', 'c'), ('b', 'c', 'a', 'd'), ('b', 'c', 'b', 'a'), ('b', 'c', 'b', 'b'), ('b', 'c', 'b', 'c'), ('b', 'c', 'b', 'd'), ('b', 'c', 'c', 'a'), ('b', 'c', 'c', 'b'), ('b', 'c', 'c', 'c'), ('b', 'c', 'c', 'd'), ('b', 'c', 'd', 'a'), ('b', 'c', 'd', 'b'), ('b', 'c', 'd', 'c'), ('b', 'c', 'd', 'd'), ('b', 'd', 'a', 'a'), ('b', 'd', 'a', 'b'), ('b', 'd', 'a', 'c'), ('b', 'd', 'a', 'd'), ('b', 'd', 'b', 'a'), ('b', 'd', 'b', 'b'), ('b', 'd', 'b', 'c'), ('b', 'd', 'b', 'd'), ('b', 'd', 'c', 'a'), ('b', 'd', 'c', 'b'), ('b', 'd', 'c', 'c'), ('b', 'd', 'c', 'd'), ('b', 'd', 'd', 'a'), ('b', 'd', 'd', 'b'), ('b', 'd', 'd', 'c'), ('b', 'd', 'd', 'd'), ('c', 'a', 'a', 'a'), ('c', 'a', 'a', 'b'), ('c', 'a', 'a', 'c'), ('c', 'a', 'a', 'd'), ('c', 'a', 'b', 'a'), ('c', 'a', 'b', 'b'), ('c', 'a', 'b', 'c'), ('c', 'a', 'b', 'd'), ('c', 'a', 'c', 'a'), ('c', 'a', 'c', 'b'), ('c', 'a', 'c', 'c'), ('c', 'a', 'c', 'd'), ('c', 'a', 'd', 'a'), ('c', 'a', 'd', 'b'), ('c', 'a', 'd', 'c'), ('c', 'a', 'd', 'd'), ('c', 'b', 'a', 'a'), ('c', 'b', 'a', 'b'), ('c', 'b', 'a', 'c'), ('c', 'b', 'a', 'd'), ('c', 'b', 'b', 'a'), ('c', 'b', 'b', 'b'), ('c', 'b', 'b', 'c'), ('c', 'b', 'b', 'd'), ('c', 'b', 'c', 'a'), ('c', 'b', 'c', 'b'), ('c', 'b', 'c', 'c'), ('c', 'b', 'c', 'd'), ('c', 'b', 'd', 'a'), ('c', 'b', 'd', 'b'), ('c', 'b', 'd', 'c'), ('c', 'b', 'd', 'd'), ('c', 'c', 'a', 'a'), ('c', 'c', 'a', 'b'), ('c', 'c', 'a', 'c'), ('c', 'c', 'a', 'd'), ('c', 'c', 'b', 'a'), ('c', 'c', 'b', 'b'), ('c', 'c', 'b', 'c'), ('c', 'c', 'b', 'd'), ('c', 'c', 'c', 'a'), ('c', 'c', 'c', 'b'), ('c', 'c', 'c', 'c'), ('c', 'c', 'c', 'd'), ('c', 'c', 'd', 'a'), ('c', 'c', 'd', 'b'), ('c', 'c', 'd', 'c'), ('c', 'c', 'd', 'd'), ('c', 'd', 'a', 'a'), ('c', 'd', 'a', 'b'), ('c', 'd', 'a', 'c'), ('c', 'd', 'a', 'd'), ('c', 'd', 'b', 'a'), ('c', 'd', 'b', 'b'), ('c', 'd', 'b', 'c'), ('c', 'd', 'b', 'd'), ('c', 'd', 'c', 'a'), ('c', 'd', 'c', 'b'), ('c', 'd', 'c', 'c'), ('c', 'd', 'c', 'd'), ('c', 'd', 'd', 'a'), ('c', 'd', 'd', 'b'), ('c', 'd', 'd', 'c'), ('c', 'd', 'd', 'd'), ('d', 'a', 'a', 'a'), ('d', 'a', 'a', 'b'), ('d', 'a', 'a', 'c'), ('d', 'a', 'a', 'd'), ('d', 'a', 'b', 'a'), ('d', 'a', 'b', 'b'), ('d', 'a', 'b', 'c'), ('d', 'a', 'b', 'd'), ('d', 'a', 'c', 'a'), ('d', 'a', 'c', 'b'), ('d', 'a', 'c', 'c'), ('d', 'a', 'c', 'd'), ('d', 'a', 'd', 'a'), ('d', 'a', 'd', 'b'), ('d', 'a', 'd', 'c'), ('d', 'a', 'd', 'd'), ('d', 'b', 'a', 'a'), ('d', 'b', 'a', 'b'), ('d', 'b', 'a', 'c'), ('d', 'b', 'a', 'd'), ('d', 'b', 'b', 'a'), ('d', 'b', 'b', 'b'), ('d', 'b', 'b', 'c'), ('d', 'b', 'b', 'd'), ('d', 'b', 'c', 'a'), ('d', 'b', 'c', 'b'), ('d', 'b', 'c', 'c'), ('d', 'b', 'c', 'd'), ('d', 'b', 'd', 'a'), ('d', 'b', 'd', 'b'), ('d', 'b', 'd', 'c'), ('d', 'b', 'd', 'd'), ('d', 'c', 'a', 'a'), ('d', 'c', 'a', 'b'), ('d', 'c', 'a', 'c'), ('d', 'c', 'a', 'd'), ('d', 'c', 'b', 'a'), ('d', 'c', 'b', 'b'), ('d', 'c', 'b', 'c'), ('d', 'c', 'b', 'd'), ('d', 'c', 'c', 'a'), ('d', 'c', 'c', 'b'), ('d', 'c', 'c', 'c'), ('d', 'c', 'c', 'd'), ('d', 'c', 'd', 'a'), ('d', 'c', 'd', 'b'), ('d', 'c', 'd', 'c'), ('d', 'c', 'd', 'd'), ('d', 'd', 'a', 'a'), ('d', 'd', 'a', 'b'), ('d', 'd', 'a', 'c'), ('d', 'd', 'a', 'd'), ('d', 'd', 'b', 'a'), ('d', 'd', 'b', 'b'), ('d', 'd', 'b', 'c'), ('d', 'd', 'b', 'd'), ('d', 'd', 'c', 'a'), ('d', 'd', 'c', 'b'), ('d', 'd', 'c', 'c'), ('d', 'd', 'c', 'd'), ('d', 'd', 'd', 'a'), ('d', 'd', 'd', 'b'), ('d', 'd', 'd', 'c'), ('d', 'd', 'd', 'd')]
+
+------------------------------------------------------------------------------------------------
+053.Find first repeated character.
+    Write a Python program to find the first repeated character in a given string.
+
+Ans.
+    # Define a function 'first_repeated_char' that takes a string 'str1' as input.
+    def first_repeated_char(str1):
+        # Iterate through each character 'c' and its index 'index' in the input string 'str1'.
+        for index, c in enumerate(str1):
+            # Check if the count of character 'c' in the substring of 'str1' up
+            # to 'index+1' is greater than 1.
+            if str1[:index + 1].count(c) > 1:
+                return c  # Return the first repeated character found.
+
+        return "None"  # Return "None" if no repeated character is found.
+
+    # Call the 'first_repeated_char' function with different input strings and
+    # print the results.
+    print(first_repeated_char("abcdabcd"))
+    print(first_repeated_char("abcd"))
+
+Sample Output:
+    a
+    None
+
+------------------------------------------------------------------------------------------------
+054.Find repeated character with smallest index.
+    Write a Python program to find the first repeated character in a given string
+    where the index of the first occurrence is smallest.
+
+Ans.
+    # Define a function that finds the first repeated character in a string with the
+    # smallest distance between the repetitions.
+    def first_repeated_char_smallest_distance(str1):
+        temp = {}  # Create an empty dictionary to store characters and their indices.
+        for ch in str1:  # Iterate through each character in the input string.
+            if ch in temp:  # If the character is already in the dictionary (repeated),
+                # Return the character and its first occurrence index.
+                return ch, str1.index(ch)
+            else:
+                # Add the character to the dictionary with a value of 0 to mark its presence.
+                temp[ch] = 0
+        return 'None'  # If no repeated character is found, return 'None'.
+    # Test the function with different input strings.
+    print(first_repeated_char_smallest_distance("abcabc"))  # Output: ('a', 0) - 'a' is the first repeated character at index 0.
+    print(first_repeated_char_smallest_distance("abcb"))    # Output: ('b', 1) - 'b' is the first repeated character at index 1.
+    print(first_repeated_char_smallest_distance("abcc"))    # Output: ('c', 1) - 'c' is the first repeated character at index 1.
+    print(first_repeated_char_smallest_distance("abcxxy"))  # Output: ('x', 3) - 'x' is the first repeated character at index 3.
+
+Sample Output:
+    ('a', 0)
+    ('b', 1)
+    ('c', 2)
+    ('x', 3)
+
+------------------------------------------------------------------------------------------------
+055.Find first repeated word in string.
+    Write a Python program to find the first repeated word in a given string.
+
+Ans.
+    # Define a function 'first_repeated_word' that takes a string 'str1' as input.
+    def first_repeated_word(str1):
+        # Create an empty set 'temp' to store unique words encountered.
+        temp = set()
+
+        # Iterate through each word in the string 'str1' by splitting it using spaces.
+        for word in str1.split():
+            # Check if the word is already in the 'temp' set.
+            if word in temp:
+                return word  # Return the first repeated word found.
+            else:
+                temp.add(word)  # Add the word to the 'temp' set if it's not already there.
+
+        return 'None'  # Return 'None' if no repeated word is found.
+
+    # Call the 'first_repeated_word' function with different input strings and
+    # print the results.
+    print(first_repeated_word("ab ca bc ab"))
+    print(first_repeated_word("ab ca bc ab ca ab bc"))
+    print(first_repeated_word("ab ca bc ca ab bc"))
+    print(first_repeated_word("ab ca bc"))
+
+Sample Output:
+    ab
+    ab
+    ca
+    None
+
+------------------------------------------------------------------------------------------------
+056.Find second most repeated word.
+    Write a Python program to find the second most repeated word in a given string.
+
+Ans.
+    # Define a function 'word_count' that takes a string 'str' as input.
+    def word_count(str):
+        # Create an empty dictionary 'counts' to store word frequencies.
+        counts = dict()
+
+        # Split the input string into words using spaces and store them in the 'words' list.
+        words = str.split()
+
+        # Iterate through each word in the 'words' list.
+        for word in words:
+            # Check if the word is already in the 'counts' dictionary.
+            if word in counts:
+                counts[word] += 1  # If it is, increment the count.
+            else:
+                counts[word] = 1  # If it's not, add it to the dictionary with a count of 1.
+
+        # Sort the items in the 'counts' dictionary based on the word frequencies.
+        # The result is a list of key-value pairs sorted by values.
+        counts_x = sorted(counts.items(), key=lambda kv: kv[1])
+
+        # Return the second-to-last item from the sorted list, which corresponds to the word with the second-highest frequency.
+        return counts_x[-2]
+
+    # Call the 'word_count' function with a long input string and print the result.
+    print(word_count("Both of these issues are fixed by postponing the evaluation of annotations. Instead of compiling code which executes expressions in annotations at their definition time, the compiler stores the annotation in a string form equivalent to the AST of the expression in question. If needed, annotations can be resolved at runtime using typing.get_type_hints(). In the common case where this is not required, the annotations are cheaper to store (since short strings are interned by the interpreter) and make startup time faster."))
+
+Sample Output:
+    ('of', 4)
+
+------------------------------------------------------------------------------------------------
+057.Remove spaces from string.
+    Write a Python program to remove spaces from a given string.
+
+Ans.
+    # Define a function 'remove_spaces' that takes a string 'str1' as input.
+    def remove_spaces(str1):
+        # Use the 'replace' method to remove spaces (' ') in the input string 'str1'.
+        str1 = str1.replace(' ', '')
+        return str1  # Return the modified string without spaces.
+
+    # Call the 'remove_spaces' function with different input strings and print the results.
+    print(remove_spaces("w 3 res ou r ce"))
+    print(remove_spaces("a b c"))
+
+Sample Output:
+    w3resource
+    abc
+
+------------------------------------------------------------------------------------------------
+058.Move spaces to front of string.
+    Write a Python program to move spaces to the front of a given string.
+
+Ans.
+    # Define a function 'move_Spaces_front' that takes a string 'str1' as input.
+    def move_Spaces_front(str1):
+        # Create a list 'noSpaces_char' containing all characters from 'str1' that
+        # are not spaces.
+        noSpaces_char = [ch for ch in str1 if ch != ' ']
+
+        # Calculate the number of space characters in the input string 'str1'.
+        spaces_char = len(str1) - len(noSpaces_char)
+
+        # Create a string 'result' containing the same number of space characters
+        # at the beginning.
+        result = ' ' * spaces_char
+
+        # Concatenate the 'result' string with the characters in 'noSpaces_char'
+        # and enclose it in double quotes.
+        result = '"' + result + ''.join(noSpaces_char) + '"'
+
+        return result  # Return the modified string.
+
+    # Call the 'move_Spaces_front' function with different input strings and print
+    # the results.
+    print(move_Spaces_front("w3resource .  com  "))
+    print(move_Spaces_front("   w3resource.com  "))
+
+Sample Output:
+    "     w3resource.com"
+    "     w3resource.com"
+
+------------------------------------------------------------------------------------------------
+059.Find maximum occurring character.
+    Write a Python program to find the maximum number of characters in a given string.
+
+Ans.
+    # Define a function 'get_max_occuring_char' that takes a string 'str1' as input.
+    def get_max_occuring_char(str1):
+        # Define the size of the ASCII character set (256 characters).
+        ASCII_SIZE = 256
+
+        # Create a list 'ctr' with 256 elements, initialized to 0. It will store the
+        # count of each character.
+        ctr = [0] * ASCII_SIZE
+
+        # Initialize variables 'max' to -1 and 'ch' to an empty string.
+        max = -1
+        ch = ''
+
+        # Iterate through each character 'i' in the input string 'str1'.
+        for i in str1:
+            # Increment the count of the character 'i' in the 'ctr' list.
+            ctr[ord(i)] += 1
+
+        # Iterate through each character 'i' in the input string 'str1' again.
+        for i in str1:
+            # Check if the count of the character 'i' is greater than the current 'max'.
+            if max < ctr[ord(i)]:
+                max = ctr[ord(i)]  # Update 'max' to the new maximum count.
+                ch = i  # Update 'ch' to the character with the maximum count.
+
+        return ch  # Return the character with the highest count.
+
+    # Call the 'get_max_occuring_char' function with different input strings and
+    # print the results.
+    print(get_max_occuring_char("Python: Get file creation and modification date/times"))
+    print(get_max_occuring_char("abcdefghijkb"))
+
+Sample Output:
+    t
+    b
+
+------------------------------------------------------------------------------------------------
+060.Capitalize first and last letters of words.
+    Write a Python program to capitalize the first and last letters of each word in
+    a given string.
+
+Ans.
+    # Define a function 'capitalize_first_last_letters' that takes a string 'str1' as input.
+    def capitalize_first_last_letters(str1):
+        # Capitalize the first letter of each word and store the result in 'str1' and 'result'.
+        str1 = result = str1.title()
+
+        # Initialize an empty string 'result' to store the final result.
+        result = ""
+
+        # Split the 'str1' into words and iterate through each word.
+        for word in str1.split():
+            # Append the word with the last letter capitalized to the 'result' string,
+            # followed by a space.
+            result += word[:-1] + word[-1].upper() + " "
+
+        # Remove the trailing space and return the modified string.
+        return result[:-1]
+
+    # Call the 'capitalize_first_last_letters' function with different input strings
+    # and print the results.
+    print(capitalize_first_last_letters("python exercises practice solution"))
+    print(capitalize_first_last_letters("w3resource"))
+
+Sample Output:
+    PythoN ExerciseS PracticE SolutioN
+    W3ResourcE
+
+------------------------------------------------------------------------------------------------
+061.Remove duplicate characters in string.
+    Write a Python program to remove duplicate characters from a given string.
+
+Ans.
+    # Import the OrderedDict class from the collections module
+    from collections import OrderedDict
+
+    # Define a function to remove duplicate characters from a string
+    def remove_duplicate(str1):
+        # Create an OrderedDict object to store unique characters and their order
+        unique_characters = OrderedDict.fromkeys(str1)
+
+        # Join the keys of the OrderedDict to form a string without duplicates
+        return "".join(unique_characters.keys())
+
+    # Remove duplicate characters from the string "python exercises practice solution"
+    result1 = remove_duplicate("python exercises practice solution")
+    print(result1)
+
+    # Remove duplicate characters from the string "w3resource"
+    result2 = remove_duplicate("w3resource")
+    print(result2)
+
+Sample Output:
+    python exrcisalu
+    w3resouc
+
+------------------------------------------------------------------------------------------------
+062.Sum digits in string.
+    Write a Python program to compute the sum of the digits in a given string.
+
+Ans.
+    # Define a function to calculate the sum of digits in a string
+    def sum_digits_string(str1):
+        # Initialize a variable to store the sum of digits
+        sum_digit = 0
+
+        # Iterate over each character in the string
+        for char in str1:
+            # Check if the current character is a digit
+            if char.isdigit():
+                # Convert the digit character to an integer
+                digit = int(char)
+
+                # Add the digit to the sum
+                sum_digit += digit
+
+        # Return the sum of digits
+        return sum_digit
+
+    # Calculate the sum of digits in the string "123abcd45"
+    result1 = sum_digits_string("123abcd45")
+    print(result1)  # Output: 15
+
+    # Calculate the sum of digits in the string "abcd1234"
+    result2 = sum_digits_string("abcd1234")
+    print(result2)  # Output: 10
+
+Sample Output:
+    15
+    10
+
+------------------------------------------------------------------------------------------------
+063.Remove leading zeros in IP address.
+    Write a Python program to remove leading zeros from an IP address.
+
+Ans.
+    # Define a function that takes an IP address as input and removes leading zeros
+    # from each octet
+    def remove_zeros_from_ip(ip_add):
+        # Split the IP address into its octets and convert each octet to an integer
+        # with no leading zeros
+        new_ip_add = ".".join([str(int(i)) for i in ip_add.split(".")])
+        # Return the new IP address with no leading zeros
+        return new_ip_add ;
+
+    # Test the function with two example IP addresses
+    print(remove_zeros_from_ip("255.024.01.01"))
+    print(remove_zeros_from_ip("127.0.0.01 "))
+
+Sample Output:
+    255.24.1.1
+    127.0.0.1
+------------------------------------------------------------------------------------------------
+064.Find max length of consecutive zeros (binary).
+    Write a Python program to find the maximum length of consecutive 0's in a given binary string.
+
+Ans.
+    # Define max_consecutive_0 function
+    def max_consecutive_0(input_str):
+
+    # Split string on '1' and map length of each substring
+    # Returns max length of 0's
+       return max(map(len,input_str.split('1')))
+
+    # Test string
+    str1 = '111000010000110'
+
+    # Print original string
+    print("Original string:" + str1)
+
+    # Print max consecutive 0's
+    print("Maximum length of consecutive 0’s:")
+    print(max_consecutive_0(str1))
+
+    # Another test string
+    str1 = '111000111'
+
+    # Print original string
+    print("Original string:" + str1)
+
+    # Print max consecutive 0's
+    print("Maximum length of consecutive 0’s:")
+    print(max_consecutive_0(str1))
+
+Sample Output:
+    Original string:111000010000110
+    Maximum length of consecutive 0’s:
+    4
+    Original string:111000111
+    Maximum length of consecutive 0’s:
+    3
+
+------------------------------------------------------------------------------------------------
+065.Common characters between two strings.
+    Write a Python program to find all the common characters in lexicographical order from two given lower case strings. If there are no similar letters print "No common characters".
+
+Ans.
+    # Import Counter for counting characters
+    from collections import Counter
+
+    def common_chars(str1,str2):
+        # Create Counter objects for each string
+        d1 = Counter(str1)
+        d2 = Counter(str2)
+
+        # Intersection of the counters gives common elements
+        common_dict = d1 & d2
+
+        # If no common elements, return message
+        if len(common_dict) == 0:
+            return "No common characters."
+
+        # Get list of common characters
+        common_chars = list(common_dict.elements())
+
+        # Sort common characters
+        common_chars = sorted(common_chars)
+
+        # Join the characters into a string
+        return ''.join(common_chars)
+
+    # Test strings
+    str1 = 'Python'
+    str2 = 'PHP'
+
+    # Print test strings
+    print("Two strings: "+str1+' : '+str2)
+
+    # Print common characters
+    print(common_chars(str1, str2))
+
+    # Test with different strings
+    str1 = 'Java'
+    str2 = 'PHP'
+
+    # Print test strings
+    print("Two strings: "+str1+' : '+str2)
+
+    # Print common characters
+    print(common_chars(str1, str2))
+
+Sample Output:
+    Two strings: Python : PHP
+    P
+    Two strings: Java : PHP
+    No common characters.
+
+------------------------------------------------------------------------------------------------
+066.Make strings anagrams (retain characters).
+    Write a Python program to make two given strings (lower case, may or may not be of
+    the same length) anagrams without removing any characters from any of the strings.
+
+Ans.
+    # Function to create character map
+    def make_map(s):
+      temp_map = {}
+      for char in s:
+        if char not in temp_map:
+          temp_map[char] = 1
+        else:
+          temp_map[char] += 1
+      return temp_map
+
+    # Function to calculate edits to make anagram
+    def make_anagram(str1, str2):
+
+      # Create maps for each string
+      str1_map1 = make_map(str1)
+      str2_map2 = make_map(str2)
+
+      ctr = 0
+
+      # Loop through keys in second map
+      for key in str2_map2.keys():
+        # If key not in first map, add to counter
+        if key not in str1_map1:
+          ctr += str2_map2[key]
+        # Else add difference
+        else:
+          ctr += max(0, str2_map2[key]-str1_map1[key])
+
+      # Loop through keys in first map
+      for key in str1_map1.keys():
+        # If key not in second map, add to counter
+        if key not in str2_map2:
+          ctr += str1_map1[key]
+        # Else add difference
+        else:
+          ctr += max(0, str1_map1[key]-str2_map2[key])
+
+      return ctr
+
+    # Get input strings
+    str1 = input("Input string1: ")
+    str2 = input("Input string2: ")
+
+    # Print number of edits
+    print(make_anagram(str1, str2))
+
+Sample Output:
+    Input string1:  The quick brown fox
+    Input string2:  jumps over the lazy dog
+    24
+
+------------------------------------------------------------------------------------------------
+067.Remove consecutive duplicates in string.
+    Write a Python program to remove all consecutive duplicates of a given string.
+
+Ans.
+    # Import groupby from itertools
+    from itertools import groupby
+
+    # Function to remove consecutive duplicates
+    def remove_all_consecutive(str1):
+
+      # Initialize empty result string
+      result_str = []
+
+      # Group string into consecutive characters
+      for (key,group) in groupby(str1):
+
+        # Append only one instance of each character
+        result_str.append(key)
+
+      # Join characters into string
+      return ''.join(result_str)
+
+    # Test string
+    str1 = 'xxxxxyyyyy'
+
+    # Print original string
+    print("Original string:" + str1)
+
+    # Print string to modify
+    print("After removing consecutive duplicates:")
+
+    # Print modified string
+    print(remove_all_consecutive(str1))
+
+Sample Output:
+    Original string:xxxxxyyyyy
+    After removing consecutive duplicates: xxxxxyyyyy
+    xy
+
+------------------------------------------------------------------------------------------------
+068.Separate single and multiple occurrence chars.
+    Write a Python program to generate two strings from a given string. For the
+    first string, use the characters that occur only once, and for the second,
+    use the characters that occur multiple times in the said string.
+
+Ans.
+    # Import Counter from collections
+    from collections import Counter
+
+    # Function to generate two strings
+    def generateStrings(input):
+
+      # Create a character counter from input
+      str_char_ctr = Counter(input)
+
+      # Part 1 contains single occurrence characters
+      part1 = [key for (key,count) in str_char_ctr.items() if count==1]
+
+      # Part 2 contains multiple occurrence characters
+      part2 = [key for (key,count) in str_char_ctr.items() if count>1]
+
+      # Sort the characters in each part
+      part1.sort()
+      part2.sort()
+
+      return part1,part2
+
+    # Test input string
+    input = "aabbcceffgh"
+
+    # Generate the two strings
+    s1, s2 = generateStrings(input)
+
+    # Print first string
+    print(''.join(s1))
+
+    # Print second string
+    print(''.join(s2))
+
+Sample Output:
+    egh
+    abcf
+
+------------------------------------------------------------------------------------------------
+069.Find longest common substring.
+    Write a Python program to find the longest common sub-string from two given strings.
+
+Ans.
+    # Import SequenceMatcher from difflib
+    from difflib import SequenceMatcher
+
+    # Function to find longest common substring
+    def longest_Substring(s1,s2):
+
+      # Create sequence matcher object
+      seq_match = SequenceMatcher(None,s1,s2)
+
+      # Find longest matching substring
+      match = seq_match.find_longest_match(0, len(s1), 0, len(s2))
+
+      # If match found, return substring
+      if (match.size!=0):
+        return (s1[match.a: match.a + match.size])
+
+      # Else no match found
+      else:
+        return ('Longest common sub-string not present')
+
+    # Test strings
+    s1 = 'abcdefgh'
+    s2 = 'xswerabcdwd'
+
+    # Print original strings
+    print("Original Substrings:\n",s1+"\n",s2)
+
+    # Print message
+    print("\nCommon longest sub_string:")
+
+    # Print longest common substring
+    print(longest_Substring(s1,s2))
+
+Sample Output:
+    Original Substrings:
+     abcdefgh
+     xswerabcdwd
+
+    Common longest sub_string:
+    abcd
+    Original Substrings:
+     abcdefgh
+     xswerabcdwd
+
+    Common longest sub_string:
+    abcd
+    Flowchart:
+
+------------------------------------------------------------------------------------------------
+070.Concatenate uncommon characters in strings.
+    Write a Python program that concatenates uncommon characters from two strings.
+
+Ans.
+    # Function to concatenate uncommon characters
+    def uncommon_chars_concat(s1, s2):
+
+      # Convert strings to sets
+      set1 = set(s1)
+      set2 = set(s2)
+
+      # Find common characters
+      common_chars = list(set1 & set2)
+
+      # List comprehension to get uncommon chars from each string
+      result = [ch for ch in s1 if ch not in common_chars] +
+      [ch for ch in s2 if ch not in common_chars]
+
+      # Join characters into string
+      return(''.join(result))
+
+    # Test strings
+    s1 = 'abcdpqr'
+    s2 = 'xyzabcd'
+
+    # Print original strings
+    print("Original Substrings:\n",s1+"\n",s2)
+
+    # Print message
+    print("\nAfter concatenating uncommon characters:")
+
+    # Print result
+    print(uncommon_chars_concat(s1, s2))
+
+Sample Output:
+    Original Substrings:
+     abcdpqr
+     xyzabcd
+
+    After concatenating uncommon characters:
+    pqrxyz
+
+------------------------------------------------------------------------------------------------
+071.Move spaces to front in single traversal.
+    Write a Python program to move all spaces to the front of a given string in a
+    single traversal.
+
+Ans.
+    # Function to move spaces to front
+    def moveSpaces(str1):
+
+        # List comprehension to remove spaces
+        no_spaces = [char for char in str1 if char!=' ']
+
+        # Get number of spaces
+        space = len(str1) - len(no_spaces)
+
+        # Create string with required spaces
+        result = ' '*space
+
+        # Return moved spaces + string without spaces
+        return result + ''.join(no_spaces)
+
+    # Test string
+    s1 = "Python Exercises"
+
+    # Print original string
+    print("Original String:\n",s1)
+
+    # Print message
+    print("\nAfter moving all spaces to the front:")
+
+    # Print result
+    print(moveSpaces(s1))
+
+Sample Output:
+    Original String:
+     Python Exercises
+
+    After moving all spaces to the front:
+     PythonExercises
+
+------------------------------------------------------------------------------------------------
+072.Remove all except specified character.
+    Write a Python program to remove all characters except a specified character
+    from a given string.
+
+Ans.
+    # Function to remove all chars except given char
+    def remove_characters(str1,c):
+
+        # List comprehension to keep only given char
+        return ''.join([el for el in str1 if el == c])
+
+    # Test string
+    text = "Python Exercises"
+
+    # Print original string
+    print("Original string")
+    print(text)
+
+    # Character to keep
+    except_char = "P"
+
+    # Print message and result
+    print("Remove all characters except",except_char,"in the said string:")
+    print(remove_characters(text,except_char))
+
+    # Second test string
+    text = "google"
+    print("\nOriginal string")
+    print(text)
+
+    except_char = "g"
+
+    # Print message and result
+    print("Remove all characters except",except_char,"in the said string:")
+    print(remove_characters(text,except_char))
+
+    # Third test string
+    text = "exercises"
+    print("\nOriginal string")
+    print(text)
+
+    except_char = "e"
+
+    # Print message and result
+    print("Remove all characters except",except_char,"in the said string:")
+    print(remove_characters(text,except_char))
+
+Sample Output:
+    Original string
+    Python Exercises
+    Remove all characters except P in the said string:
+    P
+
+    Original string
+    google
+    Remove all characters except g in the said string:
+    gg
+
+    Original string
+    exercises
+    Remove all characters except e in the said string:
+    eee
+
+------------------------------------------------------------------------------------------------
+073.Count uppercase, lowercase, special, numeric.
+    Write a Python program to count Uppercase, Lowercase, special characters and
+    numeric values in a given string.
+
+Ans.
+    # Function to count character types
+    def count_chars(str):
+
+        # Initialize counters
+        upper_ctr, lower_ctr, number_ctr, special_ctr = 0, 0, 0, 0
+
+        # Iterate through string
+        for i in range(len(str)):
+            # Increment appropriate counter
+            if str[i] >= 'A' and str[i] <= 'Z':
+              upper_ctr += 1
+            elif str[i] >= 'a' and str[i] <= 'z':
+              lower_ctr += 1
+            elif str[i] >= '0' and str[i] <= '9':
+              number_ctr += 1
+            else:
+              special_ctr += 1
+
+        # Return all counters
+        return upper_ctr, lower_ctr, number_ctr, special_ctr
+
+    # Test string
+    str = "@W3Resource.Com"
+
+    # Print original string
+    print("Original Substrings:",str)
+
+    # Call function and unpack counters
+    u, l, n, s = count_chars(str)
+
+    # Print counters
+    print('\nUpper case characters: ',u)
+    print('Lower case characters: ',l)
+    print('Number case: ',n)
+    print('Special case characters: ',s)
+
+Sample Output:
+    Original Substrings: @W3Resource.Com
+
+    Upper case characters:  3
+    Lower case characters:  9
+    Number case:  1
+    Special case characters:  2
+
+------------------------------------------------------------------------------------------------
+074.Minimum window with all chars of another string.
+    Write a Python program to find the minimum window in a given string that will
+    contain all the characters of another given string.
+
+Ans.
+    import collections
+
+    # Function to find minimum window substring
+    def min_window(str1, str2):
+
+        # Store characters and length of str2
+        result_char, missing_char = collections.Counter(str2), len(str2)
+
+        i = p = q = 0
+
+        # Iterate through str1
+        for j, c in enumerate(str1, 1):
+
+          # Decrement missing characters
+          missing_char -= result_char[c] > 0
+          result_char[c] -= 1
+
+          # If all chars found, optimize window
+          if not missing_char:
+
+            # Remove extra characters from left
+            while i < q and result_char[str1[i]] < 0:
+              result_char[str1[i]] += 1
+              i += 1
+
+            # Update window if new is smaller
+            if not q or j - i <= q - p:
+              p, q = i, j
+
+        # Return minimum window
+        return str1[p:q]
+
+    # Test strings
+    str1 = "PRWSOERIUSFK"
+    str2 = "OSU"
+
+    # Print original strings
+    print("Original Strings:\n",str1,"\n",str2)
+
+    # Print message
+    print("Minimum window:")
+
+    # Print result
+    print(min_window(str1,str2))
+
+Sample Output:
+    Original Strings:
+     PRWSOERIUSFK
+     OSU
+    Minimum window:
+    OERIUS
+
+Example 1
+    Input : str1 = " PRWSOERIUSFK "
+    str2 = " OSU "
+    Output: Minimum window is "OERIUS"
+
+------------------------------------------------------------------------------------------------
+075.Smallest window with all characters.
+    Write a Python program to find the smallest window that contains all characters
+    in a given string.
+
+Ans.
+    from collections import defaultdict   
+
+    def find_sub_string(str): 
+        str_len = len(str) 
+          
+        # Count all distinct characters. 
+        dist_count_char = len(set([x for x in str])) 
+      
+        ctr, start_pos, start_pos_index, min_len = 0, 0, -1, 9999999999
+        curr_count = defaultdict(lambda: 0) 
+        for i in range(str_len): 
+            curr_count[str[i]] += 1
+     
+            if curr_count[str[i]] == 1: 
+                ctr += 1
+      
+            if ctr == dist_count_char: 
+                while curr_count[str[start_pos]] > 1: 
+                    if curr_count[str[start_pos]] > 1: 
+                        curr_count[str[start_pos]] -= 1
+                    start_pos += 1
+      
+                len_window = i - start_pos + 1
+                if min_len > len_window: 
+                    min_len = len_window 
+                    start_pos_index = start_pos 
+        return str[start_pos_index: start_pos_index + min_len] 
+          
+    str1 = "asdaewsqgtwwsa"
+    print("Original Strings:\n",str1)
+    print("\nSmallest window that contains all characters of the said string:")
+    print(find_sub_string(str1))  
+
+Sample Output:
+    Original Strings:
+     asdaewsqgtwwsa
+
+    Smallest window that contains all characters of the said string:
+    daewsqgt
+
+------------------------------------------------------------------------------------------------
+076.Substrings with k distinct characters.
+    Write a Python program to count the number of substrings from a given string of
+    lowercase alphabets with exactly k distinct (given) characters.
+
+Ans.
+    # Function to count substrings with k distinct chars
+    def count_k_dist(str1, k):
+
+      # Get string length
+      str_len = len(str1)
+      
+      result = 0
+
+      # Character counter array
+      ctr = [0] * 27
+
+      for i in range(0, str_len):
+
+        dist_ctr = 0
+        ctr = [0] * 27
+
+        for j in range(i, str_len):
+          
+          # Increment distinct char count
+          if(ctr[ord(str1[j]) - 97] == 0):
+            dist_ctr += 1
+
+          # Increment char counter
+          ctr[ord(str1[j]) - 97] += 1
+
+          # Increment result if exactly k distinct
+          if(dist_ctr == k):
+            result += 1
+
+          # Break loop if > k distinct  
+          if(dist_ctr > k):
+            break
+
+      return result
+
+    # Get input  
+    str1 = input("Input a string (lowercase alphabets):")
+    k = int(input("Input k: "))
+
+    # Print result
+    print("Number of substrings with exactly", k, "distinct characters : ", end = "")
+    print(count_k_dist(str1, k)) 
+
+Sample Output:
+    Input a string (lowercase alphabets): wolf
+    Input k:  4
+    Number of substrings with exactly 4 distinct characters : 1
+
+
+------------------------------------------------------------------------------------------------
+077.Count non-empty substrings.
+    Write a Python program to count the number of non-empty substrings of a given string.
+
+Ans.
+    # Function to count substrings
+    def number_of_substrings(str):
+
+      # Get length of string
+      str_len = len(str);  
+
+      # Formula to calculate substrings
+      return int(str_len * (str_len + 1) / 2);
+
+    # Get input string
+    str1 = input("Input a string: ")
+
+    # Print result  
+    print("Number of substrings:")
+    print(number_of_substrings(str1)) 
+
+Sample Output:
+    Input a string:  w3resource
+    Number of substrings:
+    55
+
+------------------------------------------------------------------------------------------------
+078.Count chars matching English alphabet position.
+    Write a Python program to count characters at the same position in a given
+    string (lower and uppercase characters) as in the English alphabet.
+
+Ans.
+    # Function to count characters at same position
+    def count_char_position(str1):
+
+      count_chars = 0
+
+      # Iterate through string
+      for i in range(len(str1)):
+
+        # Check if position matches ASCII value
+        if ((i == ord(str1[i]) - ord('A')) or 
+            (i == ord(str1[i]) - ord('a'))):
+          
+          count_chars += 1
+
+      return count_chars
+
+    # Get input string  
+    str1 = input("Input a string: ")
+
+    # Print result
+    print("Number of characters of the said string at same position as in English alphabet:")
+    print(count_char_position(str1)) 
+
+Sample Output:
+    Input a string:  xbcefg
+    Number of characters of the said string at same position as in English alphabet:
+    2
+
+------------------------------------------------------------------------------------------------
+079.Find smallest and largest words.
+    Write a Python program to find the smallest and largest words in a given string.
+
+Ans.
+    # Function to find smallest and largest word
+    def smallest_largest_words(str1):
+
+      word = ""
+      all_words = [];
+
+      # Add space to end to capture last word
+      str1 = str1 + " "  
+
+      # Split to words
+      for i in range(0, len(str1)):
+        if(str1[i] != ' '):
+          word = word + str1[i];
+        else:
+          all_words.append(word);
+          word = "";
+
+      # Initialize small and large  
+      small = large = all_words[0];
+
+      # Find smallest and largest 
+      for k in range(0, len(all_words)):
+        if(len(small) > len(all_words[k])):
+          small = all_words[k];
+        if(len(large) < len(all_words[k])):
+          large = all_words[k];
+
+      return small,large;
+
+    # Test string
+    str1 = "Write a Java program to sort an array of given integers using Quick sort Algorithm.";
+
+    # Print original string
+    print("Original Strings:\n",str1)
+
+    # Find smallest and largest words
+    small, large = smallest_largest_words(str1)
+
+    # Print result
+    print("Smallest word: " + small);
+    print("Largest word: " + large); 
+
+Sample Output:
+    Original Strings:
+     Write a Java program to sort an array of given integers using Quick sort Algorithm.
+    Smallest word: a
+    Largest word: Algorithm.
+
+
+------------------------------------------------------------------------------------------------
+080.Substrings with same first and last char.
+    Write a Python program to count the number of substrings with the same first
+    and last characters in a given string.
+
+Ans.
+    # Function to count substrings with equal ends
+    def no_of_substring_with_equalEnds(str1):
+
+      result = 0;
+      
+      # Get string length
+      n = len(str1);
+
+      # Generate all substrings
+      for i in range(n):
+        for j in range(i, n):
+          
+          # Check if ends are equal
+          if (str1[i] == str1[j]):
+            result = result + 1
+
+      return result
+
+    # Get input string  
+    str1 = input("Input a string: ")
+
+    # Print result
+    print(no_of_substring_with_equalEnds(str1))
+
+Sample Output:
+    Input a string:  abc
+    3
+
+------------------------------------------------------------------------------------------------
+081.Index of substring or "Not found".
+    Write a Python program to determine the index of a given string at which a
+    certain substring starts. If the substring is not found in the given string
+    return 'Not found'.
+
+Ans.
+    # Function to find index of substring
+    def find_Index(str1, pos):
+        # Check if pos longer than str1
+        if len(pos) > len(str1):
+            return 'Not found'
+        # Iterate through str1
+        for i in range(len(str1)):
+            # Iterate through pos
+            for j in range(len(pos)):
+                # If match found, return index
+                if str1[i + j] == pos[j] and j == len(pos) - 1:
+                    return i
+            # Break if mismatch
+            elif str1[i + j] != pos[j]:
+                break
+        return 'Not found'
+    # Test cases
+    print(find_Index("Python Exercises", "Ex"))
+    print(find_Index("Python Exercises", "yt"))
+    print(find_Index("Python Exercises", "PY"))
+
+Sample Output:
+    7
+    1
+    Not found
+
+------------------------------------------------------------------------------------------------
+082.Wrap string into paragraph with width.
+    Write a Python program to wrap a given string into a paragraph with a given width.
+
+Ans.
+    # Import textwrap module
+    import textwrap 
+
+    # Get input string
+    s = input("Input a string: ")
+
+    # Get width for wrapping  
+    w = int(input("Input the width of the paragraph: ").strip())
+
+    # Print result 
+    print("Result:")
+
+    # Wrap input string to width w
+    print(textwrap.fill(s,w)) 
+
+Sample Output:
+    Input a string:  The quick brown fox.
+    Input the width of the paragraph:  10
+    Result:
+    The quick
+    brown fox.
+
+------------------------------------------------------------------------------------------------
+083.Print number in decimal, octal, hex, binary.
+    Write a Python program to print four integer values - decimal, octal, 
+    hexadecimal (capitalized), binary - in a single line.
+
+Ans.
+    # Get user input for an integer
+    i = int(input("Input an integer: "))
+
+    # Convert the integer to octal and remove the '0o' prefix
+    o = str(oct(i))[2:]
+        
+    # Convert the integer to hexadecimal and remove the '0x' prefix, then capitalize the result
+    h = str(hex(i))[2:].upper()
+
+    # Convert the integer to binary and remove the '0b' prefix
+    b = str(bin(i))[2:]
+
+    # Convert the integer to a string for decimal representation
+    d = str(i)
+
+    # Print the formatted output with headers
+    print("Decimal Octal Hexadecimal (capitalized), Binary")
+    print(d,'  ',o,' ',h,'                   ',b)
+
+Sample Output:
+    Input an integer:  25
+    Decimal Octal Hexadecimal (capitalized), Binary
+    25    31   19                     11001
+
+------------------------------------------------------------------------------------------------
+084.Swap cases in string.
+    Write a Python program to swap cases in a given string.
+
+Ans.
+    # Define a function to swap the case of characters in a string
+    def swap_case_string(str1):
+        # Initialize an empty string to store the result
+        result_str = ""
+        
+        # Iterate through each character in the input string
+        for item in str1:
+            # Check if the character is uppercase
+            if item.isupper():
+                # If uppercase, convert to lowercase and append to the result string
+                result_str += item.lower()
+            else:
+                # If lowercase, convert to uppercase and append to the result string
+                result_str += item.upper()
+        
+        # Return the final swapped case string
+        return result_str
+
+    # Test the function with different input strings and print the results
+    print(swap_case_string("Python Exercises"))
+    print(swap_case_string("Java"))
+    print(swap_case_string("NumPy"))
+
+Sample Output:
+    pYTHON eXERCISES
+    jAVA
+    nUMpY
+
+------------------------------------------------------------------------------------------------
+085.Bytearray to hexadecimal string.
+    Write a Python program to convert a given Bytearray to a Hexadecimal string.
+
+Ans.
+    # Define a function to convert a bytearray to a hexadecimal string
+    def bytearray_to_hexadecimal(list_val):
+        # Use a generator expression to convert each byte in the list to a
+        # two-digit hexadecimal representation
+        result = ''.join('{:02x}'.format(x) for x in list_val)
+            
+        # Return the resulting hexadecimal string
+        return result
+
+    # Create a bytearray represented by a list of integers
+    list_val = [111, 12, 45, 67, 109]
+
+    # Print the original list representing the bytearray
+    print("Original Bytearray :")
+    print(list_val)
+
+    # Print a newline for better formatting
+    print("\nHexadecimal string:")
+
+    # Call the function to convert the bytearray to a hexadecimal string and print the result
+    print(bytearray_to_hexadecimal(list_val)) 
+
+Sample Output:
+    Original Bytearray :
+    [111, 12, 45, 67, 109]
+
+    Hexadecimal string:
+    6f0c2d436d
+
+------------------------------------------------------------------------------------------------
+086.Delete all occurrences of character.
+    Write a Python program to delete all occurrences of a specified character
+    in a given string.
+
+Ans.
+    # Define a function to delete all occurrences of a specified character in a given string
+    def delete_all_occurrences(str1, ch):
+        # Use the replace() method to replace all occurrences of the specified character with an empty string
+        result = str1.replace(ch, "")
+        
+        # Return the modified string
+        return result
+
+    # Initialize a string
+    str_text = "Delete all occurrences of a specified character in a given string"
+
+    # Print the original string
+    print("Original string:")
+    print(str_text)
+
+    # Print a newline for better formatting
+    print("\nModified string:")
+
+    # Specify the character to be deleted and call the function to delete all occurrences of that character
+    ch = 'a'
+    print(delete_all_occurrences(str_text, ch)) 
+
+Sample Output:
+    Original string:
+    Delete all occurrences of a specified character in a given string
+
+    Modified string:
+    Delete ll occurrences of  specified chrcter in  given string
+
+------------------------------------------------------------------------------------------------
+087.Find common values in two strings.
+    Write a Python program to find the common values that appear in two given strings.
+
+Ans.
+    # Define a function to find the intersection of two strings
+    def intersection_of_two_string(str1, str2):
+        # Initialize an empty string to store the intersection
+        result = ""
+
+        # Iterate through each character in the first string
+        for ch in str1:
+            # Check if the character is present in the second string and not already in the result string
+            if ch in str2 and not ch in result:
+                # If true, add the character to the result string
+                result += ch
+
+        # Return the resulting intersection string
+        return result
+
+    # Initialize two strings
+    str1 = 'Python3'
+    str2 = 'Python2.7'
+
+    # Print the original strings
+    print("Original strings:")
+    print(str1)
+    print(str2)
+
+    # Print a newline for better formatting
+    print("\nIntersection of two said String:")
+
+    # Call the function to find the intersection of the two strings and print the result
+    print(intersection_of_two_string(str1, str2)) 
+
+Sample Output:
+    Original strings:
+    Python3
+    Python2.7
+
+    Intersection of two said String:
+    Python
+
+
+Sample Output:
+Original strings:
+Python3
+Python2.7
+Intersection of two said String:
+Python
+
+------------------------------------------------------------------------------------------------
+088.Check string for capital, lower, number, length.
+    Write a Python program to check whether a given string contains a capital
+    letter, a lower case letter, a number and a minimum length.
+
+Ans.
+    # Define a function to check the validity of a string based on certain criteria
+    def check_string(s):
+        # Initialize an empty list to store error messages
+        messg = []
+
+        # Check if the string contains at least one uppercase character
+        if not any(x.isupper() for x in s):
+            messg.append('String must have 1 upper case character.')
+
+        # Check if the string contains at least one lowercase character
+        if not any(x.islower() for x in s):
+            messg.append('String must have 1 lower case character.')
+
+        # Check if the string contains at least one digit
+        if not any(x.isdigit() for x in s):
+            messg.append('String must have 1 number.')
+
+        # Check if the string length is at least 8 characters
+        if len(s) < 8:
+            messg.append('String length should be at least 8.')
+
+        # If there are no error messages, add a message indicating the string is valid
+        if not messg:
+            messg.append('Valid string.')
+
+        # Return the list of error messages or the validation message
+        return messg
+
+    # Get user input for a string
+    s = input("Input the string: ")
+
+    # Call the function to check the string and print the result
+    print(check_string(s)) 
+
+Sample Output:
+    Input the string:  W3resource
+    ['Valid string.']
+
+------------------------------------------------------------------------------------------------
+089.Remove unwanted characters in string.
+    Write a Python program to remove unwanted characters from a given string.
+
+Ans.
+    # Define a function to remove unwanted characters from a string
+    def remove_chars(str1, unwanted_chars):
+        # Iterate through each unwanted character
+        for i in unwanted_chars:
+            # Use the replace() method to remove occurrences of the unwanted character from the string
+            str1 = str1.replace(i, '')
+        
+        # Return the modified string without unwanted characters
+        return str1
+
+    # Initialize two strings
+    str1 = "Pyth*^on Exercis^es"
+    str2 = "A%^!B#*CD"
+
+    # Specify a list of unwanted characters
+    unwanted_chars = ["#", "*", "!", "^", "%"]
+
+    # Print the original string and a message indicating the removal of unwanted characters
+    print("Original String : " + str1)
+    print("After removing unwanted characters:")
+    # Call the function to remove unwanted characters and print the result
+    print(remove_chars(str1, unwanted_chars))
+
+    # Print a newline for better formatting
+    print("\nOriginal String : " + str2)
+    print("After removing unwanted characters:")
+    # Call the function to remove unwanted characters and print the result
+    print(remove_chars(str2, unwanted_chars)) 
+
+Sample Output:
+    Original String : Pyth*^on Exercis^es
+    After removing unwanted characters:
+    Python Exercises
+
+    Original String : A%^!B#*CD
+    After removing unwanted characters:
+    ABCD
+
+------------------------------------------------------------------------------------------------
+090.Remove duplicate words in string.
+    Write a Python program to remove duplicate words from a given string.
+
+Ans.
+    # Define a function to return a string with unique words
+    def unique_list(text_str):
+        # Split the input string into a list of words
+        l = text_str.split()
+        
+        # Initialize an empty list to store unique words
+        temp = []
+        
+        # Iterate through each word in the list
+        for x in l:
+            # Check if the word is not already in the temporary list
+            if x not in temp:
+                # If true, add the word to the temporary list
+                temp.append(x)
+        
+        # Join the unique words into a string and return the result
+        return ' '.join(temp)
+
+    # Initialize a string
+    text_str = "Python Exercises Practice Solution Exercises"
+
+    # Print the original string
+    print("Original String:")
+    print(text_str)
+
+    # Print a newline for better formatting
+    print("\nAfter removing duplicate words from the said string:")
+
+    # Call the function to remove duplicate words and print the result
+    print(unique_list(text_str)) 
+
+Sample Output:
+    Original String:
+    Python Exercises Practice Solution Exercises
+
+    After removing duplicate words from the said string:
+    Python Exercises Practice Solution
+
+------------------------------------------------------------------------------------------------
+091.Convert heterogeneous list to string.
+    Write a Python program to convert a given heterogeneous list of scalars 
+    into a string.
+
+Ans.
+    # Define a function to convert a heterogeneous list of scalars into a string
+    def heterogeneous_list_to_str(lst):
+        # Use the join() method to concatenate the string representations of each element in the list
+        result = ','.join(str(x) for x in lst)
+        
+        # Return the resulting string
+        return result
+
+    # Initialize a heterogeneous list of scalars
+    h_data = ["Red", 100, -50, "green", "w,3,r", 12.12, False]
+
+    # Print the original list
+    print("Original list:")
+    print(h_data)
+
+    # Print a newline for better formatting
+    print("\nConvert the heterogeneous list of scalars into a string:")
+
+    # Call the function to convert the list into a string and print the result
+    print(heterogeneous_list_to_str(h_data)) 
+
+Sample Output:
+    Original list:
+    ['Red', 100, -50, 'green', 'w,3,r', 12.12, False]
+
+    Convert the heterogeneous list of scalars into a string:
+    Red,100,-50,green,w,3,r,12.12,False
+
+------------------------------------------------------------------------------------------------
+092.Find similarity between two strings.
+    Write a Python program to find string similarity between two given strings.
+
+Ans.
+    # Import the difflib module for computing string similarity
+    import difflib
+
+    # Define a function to calculate the similarity ratio between two strings
+    def string_similarity(str1, str2):
+        # Create a SequenceMatcher object with the lowercase versions of the input strings
+        result = difflib.SequenceMatcher(a=str1.lower(), b=str2.lower())
+        
+        # Return the similarity ratio between the two strings
+        return result.ratio()
+
+    # Initialize two strings for comparison
+    str1 = 'Python Exercises'
+    str2 = 'Python Exercises'
+
+    # Print the original strings
+    print("Original string:")
+    print(str1)
+    print(str2)
+
+    # Print a message indicating the similarity between the two strings
+    print("Similarity between two said strings:")
+    print(string_similarity(str1, str2))
+
+    # Repeat the process with different pairs of strings
+    str1 = 'Python Exercises'
+    str2 = 'Python Exercise'
+    print("\nOriginal string:")
+    print(str1)
+    print(str2)
+    print("Similarity between two said strings:")
+    print(string_similarity(str1, str2))
+
+    str1 = 'Python Exercises'
+    str2 = 'Python Ex.'
+    print("\nOriginal string:")
+    print(str1)
+    print(str2)
+    print("Similarity between two said strings:")
+    print(string_similarity(str1, str2))
+
+    str1 = 'Python Exercises'
+    str2 = 'Python'
+    print("\nOriginal string:")
+    print(str1)
+    print(str2)
+    print("Similarity between two said strings:")
+    print(string_similarity(str1, str2))
+
+    str1 = 'Python Exercises'
+    str2 = 'Java Exercises'
+    print("\nOriginal string:")
+    print(str1)
+    print(str2)
+    print("Similarity between two said strings:")
+    print(string_similarity(str1, str2)) 
+
+Sample Output:
+    Original string:
+    Python Exercises
+    Python Exercises
+    Similarity between two said strings:
+    1.0
+
+    Original string:
+    Python Exercises
+    Python Exercise
+    Similarity between two said strings:
+    0.967741935483871
+
+    Original string:
+    Python Exercises
+    Python Ex.
+    Similarity between two said strings:
+    0.6923076923076923
+
+    Original string:
+    Python Exercises
+    Python
+    Similarity between two said strings:
+    0.5454545454545454
+
+    Original string:
+    Java Exercises
+    Python
+    Similarity between two said strings:
+    0.0
+
+------------------------------------------------------------------------------------------------
+093.Extract numbers from string.
+    Write a Python program to extract numbers from a given string.
+
+Ans.
+    # Define a function to extract numbers from a given string
+    def test(str1):
+        # Use a list comprehension to extract integers from the string if they are digits
+        result = [int(str1) for str1 in str1.split() if str1.isdigit()]
+        
+        # Return the list of extracted numbers
+        return result
+
+    # Initialize a string containing a mix of words and numbers
+    str1 = "red 12 black 45 green"
+
+    # Print the original string
+    print("Original string:", str1)
+
+    # Print a message indicating the extraction of numbers from the string
+    print("Extract numbers from the said string:")
+    # Call the function to extract numbers and print the result
+    print(test(str1)) 
+
+Sample Output:
+    Original string: red 12 black 45 green
+    Extract numbers from the said string:
+    [12, 45]
+
+
+Sample Output:
+Original string: red 12 black 45 green
+Extract numbers from the said string: [12, 45]
+
+------------------------------------------------------------------------------------------------
+094.Hex color code to RGB tuple.
+    Write a Python program to convert a hexadecimal color code to a tuple of 
+    integers corresponding to its RGB components.
+
+Ans.
+    # Define a function to convert a hexadecimal color code to an RGB tuple
+    def hex_to_rgb(hex):
+        # Use a generator expression to convert pairs of hexadecimal digits to integers and create a tuple
+        return tuple(int(hex[i:i+2], 16) for i in (0, 2, 4))
+
+    # Test the function with different hexadecimal color codes and print the results
+    print(hex_to_rgb('FFA501'))
+    print(hex_to_rgb('FFFFFF'))
+    print(hex_to_rgb('000000'))
+    print(hex_to_rgb('FF0000'))
+    print(hex_to_rgb('000080'))
+    print(hex_to_rgb('C0C0C0')) 
+
+Sample Output:
+    (255, 165, 1)
+    (255, 255, 255)
+    (0, 0, 0)
+    (255, 0, 0)
+    (0, 0, 128)
+    (192, 192, 192)
+
+------------------------------------------------------------------------------------------------
+095.RGB to hex color code.
+    Write a Python program to convert the values of RGB components to a
+    hexadecimal color code.
+
+Ans.
+    # Define a function to convert RGB values to a hexadecimal color code
+    def rgb_to_hex(r, g, b):
+        # Use string formatting to convert the RGB values to a hexadecimal color code
+        return ('{:02X}' * 3).format(r, g, b)
+        
+    # Test the function with different RGB values and print the results
+    print(rgb_to_hex(255, 165, 1))
+    print(rgb_to_hex(255, 255, 255))
+    print(rgb_to_hex(0, 0, 0))
+    print(rgb_to_hex(0, 0, 128))
+    print(rgb_to_hex(192, 192, 192)) 
+
+Sample Output:
+    FFA501
+    FFFFFF
+    000000
+    000080
+    C0C0C0
+
+------------------------------------------------------------------------------------------------
+096.Convert string to CamelCase.
+    Write a Python program to convert a given string to Camelcase.
+
+Ans.
+    # Import the 'sub' function from the 're' module for regular expression substitution
+    from re import sub
+
+    # Define a function to convert a string to camel case
+    def camel_case(s):
+        # Use regular expression substitution to replace underscores and hyphens with spaces,
+        # then title case the string (capitalize the first letter of each word), and remove spaces
+        s = sub(r"(_|-)+", " ", s).title().replace(" ", "")
+        
+        # Join the string, ensuring the first letter is lowercase
+        return ''.join([s[0].lower(), s[1:]])
+
+    # Test the function with different input strings and print the results
+    print(camel_case('JavaScript'))
+    print(camel_case('Foo-Bar'))
+    print(camel_case('foo_bar'))
+    print(camel_case('--foo.bar'))
+    print(camel_case('Foo-BAR'))
+    print(camel_case('fooBAR'))
+    print(camel_case('foo bar')) 
+
+Sample Output:
+    javascript
+    fooBar
+    fooBar
+    foo.Bar
+    fooBar
+    foobar
+    fooBar
+
+------------------------------------------------------------------------------------------------
+097.Convert string to snake_case.
+    Write a Python program to convert a given string to Snake case.
+
+Ans.
+    # Import the 'sub' function from the 're' module for regular expression substitution
+    from re import sub
+
+    # Define a function to convert a string to snake case
+    def snake_case(s):
+        # Replace hyphens with spaces, then apply regular expression substitutions for title case conversion
+        # and add an underscore between words, finally convert the result to lowercase
+        return '_'.join(
+            sub('([A-Z][a-z]+)', r' \1',
+            sub('([A-Z]+)', r' \1',
+            s.replace('-', ' '))).split()).lower()
+
+    # Test the function with different input strings and print the results
+    print(snake_case('JavaScript'))
+    print(snake_case('Foo-Bar'))
+    print(snake_case('foo_bar'))
+    print(snake_case('--foo.bar'))
+    print(snake_case('Foo-BAR'))
+    print(snake_case('fooBAR'))
+    print(snake_case('foo bar')) 
+
+Sample Output:
+    java_script
+    foo_bar
+    foo_bar
+    foo.bar
+    foo_bar
+    foo_bar
+    foo_bar
+
+------------------------------------------------------------------------------------------------
+098.Decapitalize first letter in string.
+    Write a Python program to decapitalize the first letter of a given string.
+
+Ans.
+    # Define a function to decapitalize the first letter of a string
+    # Optionally, capitalize the rest of the string if 'upper_rest' is True (default is False)
+    def decapitalize_first_letter(s, upper_rest=False):
+        # Join the first letter in lowercase with the rest of the string, optionally capitalizing the rest
+        return ''.join([s[:1].lower(), (s[1:].upper() if upper_rest else s[1:])])
+        
+    # Test the function with different input strings and print the results
+    print(decapitalize_first_letter('Java Script'))
+    print(decapitalize_first_letter('Python')) 
+
+Sample Output:
+    java Script
+    python
+
+------------------------------------------------------------------------------------------------
+099.Split multiline string to lines.
+    Write a Python program to split a multi-line string into a list of lines.
+
+Ans.
+    # Define a function to split a string into a list of lines based on newline characters
+    def split_lines(s):
+        # Use the split() method with '\n' as the delimiter to create a list of lines
+        return s.split('\n')
+
+    # Print a message indicating the original string
+    print("Original string:")
+    # Print a multiline string for demonstration purposes
+    print("This\nis a\nmultiline\nstring.\n")
+
+    # Print a message indicating the splitting of the multiline string into a list of lines
+    print("Split the said multiline string into a list of lines:")
+    # Call the function to split the multiline string and print the result
+    print(split_lines('This\nis a\nmultiline\nstring.\n')) 
+
+Sample Output:
+    Original string:
+    This
+    is a
+    multiline
+    string.
+
+    Split the said multiline string into a list of lines:
+    ['This', 'is a', 'multiline', 'string.', '']
+
+------------------------------------------------------------------------------------------------
+100.Check words for duplicate characters.
+    Write a Python program to check whether any word in a given string contains
+    duplicate characters or not. Return True or False.
+
+Ans.
+    # Define a function to check if any word in a string contains duplicate characters
+    def duplicate_letters(text):
+        # Split the input string into a list of words
+        word_list = text.split()
+        
+        # Iterate through each word in the list
+        for word in word_list:
+            # Check if the length of the word is greater than the number of unique characters in the word
+            if len(word) > len(set(word)):
+                # If true, the word contains duplicate characters, return False
+                return False
+        
+        # If no word with duplicate characters is found, return True
+        return True
+
+    # Initialize a string
+    text = "Filter out the factorials of the said list."
+
+    # Print the original text
+    print("Original text:")
+    print(text)
+
+    # Print a message indicating the check for duplicate characters in any word
+    print("Check whether any word in the said sting contains duplicate characters or not!")
+
+    # Call the function to check for duplicate characters and print the result
+    print(duplicate_letters(text))
+
+    # Repeat the process with different input strings
+    text = "Python Exercise."
+    print("\nOriginal text:")
+    print(text)
+    print("Check whether any word in the said sting contains duplicate characters or not!")
+    print(duplicate_letters(text))
+
+    text = "The wait is over."
+    print("\nOriginal text:")
+    print(text)
+    print("Check whether any word in the said sting contains duplicate characters or not!")
+    print(duplicate_letters(text)) 
+
+Sample Output:
+    Original text:
+    Filter out the factorials of the said list.
+    Check whether any word in the said sting contains duplicate characrters or not!
+    False
+
+    Original text:
+    Python Exercise.
+    Check whether any word in the said sting contains duplicate characrters or not!
+    False
+
+    Original text:
+    The wait is over.
+    Check whether any word in the said sting contains duplicate characrters or not!
+    True
+
+------------------------------------------------------------------------------------------------
+101.Add two strings as numbers.
+    Write a Python program to add two strings as if they were numbers
+    (positive integer values). Return a message if the numbers are strings.
+
+Ans.
+
+Sample Output:
+42
+Error in input!
+Error in input!
+
+------------------------------------------------------------------------------------------------
+102.Remove punctuation from string.
+    Write a Python program to remove punctuation from a given string.
+
+Ans.
+
+Sample Output:
+Original text:
+String! With. Punctuation?
+After removing Punctuations from the said string:
+String With Punctuation
+
+------------------------------------------------------------------------------------------------
+103.Replace long words with hash.
+    Write a Python program to replace each character of a word of length five
+    and more with a hash character (#).
+
+Ans.
+
+Sample Output:
+Original string: Count the lowercase letters in the said list of words:
+Replace words (length five or more) with hash characters in the said string:
+##### the ######### ####### in the said list of ######
+Original string: Python - Remove punctuations from a string:
+Replace words (length five or more) with hash characters in the said string:
+###### - ###### ############ from a #######
+
+------------------------------------------------------------------------------------------------
+104.Capitalize first letter of words.
+    Write a Python program that capitalizes the first letter and lowercases the
+    remaining letters in a given string.
+
+Ans.
+
+Sample Data:
+("Red Green WHITE") -> "Red Green White"
+("w3resource") -> "W3resource"
+("dow jones industrial average") -> "Dow Jones Industrial Average"
+
+------------------------------------------------------------------------------------------------
+105.Extract name from email address.
+    Write a Python program to extract and display the name from a given Email address.
+
+Ans.
+
+Sample Data:
+("john@example.com") -> ("john")
+("john.smith@example.com") -> ("johnsmith")
+("fully-qualified-domain@example.com") -> ("fullyqualifieddomain")
+
+------------------------------------------------------------------------------------------------
+106.Remove repeated consecutive chars.
+    Write a Python program to remove repeated consecutive characters and replace
+    them with single letters and print a updated string.
+
+Ans.
+
+Sample Data:
+("Red Green White") -> "Red Gren White"
+("aabbbcdeffff") -> "abcdef"
+("Yellowwooddoor") -> "Yelowodor"
+
+------------------------------------------------------------------------------------------------
+107.Count matches of three letters at same index.
+    Write a Python program that takes two strings. Count the number of times each
+    string contains the same three letters at the same index.
+
+Ans.
+
+Sample Data:
+("Red RedGreen") -> 1
+("Red White Red White) -> 7
+("Red White White Red") -> 0
+
+------------------------------------------------------------------------------------------------
+108.Add hashes around non-vowels.
+    Write a Python program that takes a string and returns # on both sides of each
+    element, which are not vowels.
+
+Ans.
+
+Sample Data:
+("Green" -> "-G--r-ee-n-"
+("White") -> "-W--h-i-t-e"
+("aeiou") -> "aeiou"
+
+------------------------------------------------------------------------------------------------
+109.Count leap years in a year range.
+    Write a Python program that counts the number of leap years within the range of
+    years. Ranges of years should be accepted as strings.
+
+Ans.
+
+Sample Data:
+("1981-1991") -> 2
+("2000-2020") -> 6
+
+------------------------------------------------------------------------------------------------
+110.Insert space before capital letters.
+    Write a Python program to insert space before every capital letter appears in
+    a given word.
+
+Ans.
+
+Sample Data:
+("PythonExercises") -> "Python Exercises"
+("Python") -> "Python"
+("PythonExercisesPracticeSolution") -> "Python Exercises Practice Solution"
+
+------------------------------------------------------------------------------------------------
+111.Replace chars with position numbers.
+    Write a Python program that takes a string and replaces all the characters with
+    their respective numbers.
+
+Ans.
+
+Sample Data:
+("Python") -> "16 25 20 8 15 14"
+("Java") -> "10 1 22 1"
+("Python Tutorial") -> "16 25 20 8 15 14 20 21 20 15 18 9 1 12"
+
+------------------------------------------------------------------------------------------------
+112.Add numbers given as strings.
+    Write a Python program to calculate the sum of two numbers given as strings.
+    Return the result in the same string representation.
+
+Ans.
+
+Sample Data:
+( "234242342341", "2432342342") -> "236674684683"
+( "", "2432342342") -> False ( "1000", "0") -> "1000"
+( "1000", "10") -> "1010"
+
+------------------------------------------------------------------------------------------------
+113.Sort words alphabetically by first character.
+    Write a Python program that returns a string sorted alphabetically by the first
+    character of a given string of words.
+
+Ans.
+
+Sample Data:
+("Red Green Black White Pink") -> "Black Green Pink Red White"
+("Calculate the sum of two said numbers given as strings.") -> ("Calculate as given numbers of sum said strings. the two")
+("The quick brown fox jumps over the lazy dog.") -> ("The brown dog. fox jumps lazy over quick the")
+
+------------------------------------------------------------------------------------------------
